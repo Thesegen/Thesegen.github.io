@@ -17,7 +17,7 @@
     body {
       font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       margin: 0;
-      padding: 0;
+      padding: 20px; /* margin inside the screen */
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -36,7 +36,7 @@
     /* Glass card */
     .card {
       max-width: 760px;
-      width: 90%;
+      width: 100%;
       padding: 32px;
       border-radius: 18px;
       background: rgba(255, 255, 255, 0.7);
@@ -85,7 +85,7 @@
       font-size: 18px;
     }
 
-    /* Modern gradient buttons */
+    /* Modern gradient buttons with ripple */
     .links a {
       display: inline-block;
       margin: 8px 12px 0 0;
@@ -101,23 +101,25 @@
       position: relative;
       overflow: hidden;
     }
-    .links a::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 200%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.25);
-      transform: skewX(-20deg);
-      transition: left 0.6s ease;
-    }
-    .links a:hover::after {
-      left: 100%;
-    }
     .links a:hover {
       transform: translateY(-4px) scale(1.05);
       box-shadow: 0 8px 20px rgba(142,45,226,0.35);
+    }
+
+    /* Ripple effect on button */
+    .links a span.ripple {
+      position: absolute;
+      border-radius: 50%;
+      transform: scale(0);
+      animation: rippleAnim 0.6s linear;
+      background: rgba(255, 255, 255, 0.6);
+      pointer-events: none;
+    }
+    @keyframes rippleAnim {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
     }
 
     hr {
@@ -148,7 +150,7 @@
 
     /* Mobile responsiveness */
     @media (max-width: 600px) {
-      .card { padding: 22px; }
+      .card { padding: 24px; }
       h1 { font-size: 26px; }
     }
   </style>
@@ -176,5 +178,21 @@
       © <span>2025</span> Thesegen Marimuthu • <a href="mailto:vathesegen@gmail.com">vathesegen@gmail.com</a>
     </footer>
   </div>
+
+  <script>
+    // Ripple effect script
+    document.querySelectorAll('.links a').forEach(button => {
+      button.addEventListener('click', function (e) {
+        const ripple = document.createElement('span');
+        ripple.classList.add('ripple');
+        const rect = button.getBoundingClientRect();
+        ripple.style.width = ripple.style.height = Math.max(rect.width, rect.height) + 'px';
+        ripple.style.left = e.clientX - rect.left - (parseInt(ripple.style.width) / 2) + 'px';
+        ripple.style.top = e.clientY - rect.top - (parseInt(ripple.style.height) / 2) + 'px';
+        button.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
+      });
+    });
+  </script>
 </body>
 </html>
