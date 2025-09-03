@@ -3,13 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title> Thesegen Marimuthu - Tech Builder </title>
+  <title>Thesegen Marimuthu — Problem Solver & Tech Builder</title>
 
-  <!-- Google verification -->
-  <meta name="google-site-verification" content="JleqVP0cv3yMeycRrU6LyU0U1Gl9Lj-Kel5er3IpHKc" />
+  <!-- Google site verification -->
+  <meta name="google-site-verification" content="7YflHmwVOmBsp4ATQMZUK7tA9q19CfMW6uwwVLa_EAc" />
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Thesegen Marimuthu | RoboDK Robotics Certified • Junior Python Developer • Creative problem solver building systems that turn challenges into solutions." />
+  <meta name="author" content="Thesegen Marimuthu" />
 
   <style>
-    /* Background */
+    /* Vibrant animated gradient background */
     body {
       font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       margin: 0;
@@ -18,85 +22,93 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #eef2f7, #dbeafe);
+      background: linear-gradient(-45deg, #4facfe, #00f2fe, #43e97b, #fbd786);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
       color: #111;
     }
 
-    /* Card */
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Glass card */
     .card {
       max-width: 760px;
-      background: #fff;
+      width: 90%;
       padding: 32px;
       border-radius: 16px;
-      box-shadow: 0 6px 30px rgba(2,6,23,0.08);
-      animation: fadeUp 0.8s ease-out;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+      animation: fadeUp 1s ease;
     }
 
-    .card:hover {
-      transform: scale(1.02);
-      box-shadow: 0 10px 40px rgba(2,6,23,0.15);
-    }
-
-    /* Animations */
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Typography */
     h1 {
       margin: 0;
-      font-size: 30px;
+      font-size: 32px;
+      font-weight: 700;
       color: #111827;
     }
 
     p.lead {
-      margin: 8px 0 18px;
+      margin: 12px 0 22px;
       color: #374151;
-      font-size: 16px;
+      font-size: 18px;
     }
 
-    /* Links */
+    /* Links styled as buttons */
     .links a {
       display: inline-block;
-      margin: 6px 12px 0 0;
+      margin: 8px 12px 0 0;
       padding: 10px 16px;
       background: #0366d6;
       color: #fff;
       border-radius: 8px;
-      font-size: 14px;
+      font-size: 15px;
       text-decoration: none;
-      transition: all 0.25s ease;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     .links a:hover {
       background: #024c9c;
-      transform: translateY(-4px);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
     }
 
-    /* QR code */
     .qr {
       float: right;
       width: 110px;
       margin-left: 18px;
-      border-radius: 8px;
+      border-radius: 10px;
     }
 
-    /* Footer */
+    hr {
+      margin: 24px 0;
+      border: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    /* Modern footer */
     footer {
-      margin-top: 22px;
-      color: #6b7280;
-      font-size: 13px;
+      margin-top: 20px;
+      font-size: 14px;
       text-align: center;
+      color: #374151;
+    }
+
+    footer span {
+      font-weight: 500;
+      color: #111827;
     }
 
     footer a {
@@ -108,40 +120,34 @@
       text-decoration: underline;
     }
 
-    /* Responsive */
+    /* Mobile responsiveness */
     @media (max-width: 600px) {
-      .card {
-        padding: 22px;
-      }
-      h1 {
-        font-size: 24px;
-      }
-      .qr {
-        display: none; /* hide QR on very small screens */
-      }
+      .card { padding: 22px; }
+      h1 { font-size: 26px; }
+      .qr { display: none; }
     }
   </style>
 </head>
 <body>
   <div class="card">
-    <img class="qr" src="assets/qr.png" alt="QR to link hub (replace with your QR)">
-    <h1> Thesegen Marimuthu - Tech Builder </h1>
-    <p class="lead">RoboDK Robotics Certified • Junior Python Developer • Systems-minded problem solver</p>
+    <img class="qr" src="assets/qr.png" alt="QR code to portfolio">
+    <h1>Thesegen Marimuthu</h1>
+    <p class="lead">RoboDK Robotics Certified • Junior Python Developer • Creative problem solver who builds systems that outlast problems.</p>
 
     <div class="links">
       <a href="https://www.linkedin.com/in/thesegen-marimuthu" target="_blank">LinkedIn</a>
       <a href="https://github.com/thesegen" target="_blank">GitHub</a>
-      <a href="links.html">Link Hub</a>
+      <a href="links.html">Portfolio Links</a>
     </div>
 
     <hr/>
     <p>
-      I build practical systems to solve real problems — auto classroom management systems, robotics simulations, and Python automation.  
-      Explore my work and project details on GitHub.
+      I design practical solutions that simplify complexity — from automated classroom management systems to robotics simulations and Python automation.  
+      Constantly learning and adapting, I aim to bring clarity, creativity, and problem-solving energy into every project I take on.
     </p>
 
     <footer>
-      © 2025 Thesegen Marimuthu • <a href="mailto:vathesegen@gmail.com">vathesegen@gmail.com</a
+      © <span>2025</span> Thesegen Marimuthu • <a href="mailto:vathesegen@gmail.com">vathesegen@gmail.com</a>
     </footer>
   </div>
 </body>
