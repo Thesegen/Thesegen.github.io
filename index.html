@@ -9,45 +9,68 @@
   <meta name="google-site-verification" content="JleqVP0cv3yMeycRrU6LyU0U1Gl9Lj-Kel5er3IpHKc" />
 
   <style>
+    /* Background */
     body {
       font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       margin: 0;
       padding: 0;
-      background: #f7fafc;
-      color: #111;
-
-      /* Center card in middle of screen */
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
+      background: linear-gradient(135deg, #eef2f7, #dbeafe);
+      color: #111;
     }
 
+    /* Card */
     .card {
       max-width: 760px;
       background: #fff;
-      padding: 28px;
-      border-radius: 12px;
+      padding: 32px;
+      border-radius: 16px;
       box-shadow: 0 6px 30px rgba(2,6,23,0.08);
+      animation: fadeUp 0.8s ease-out;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 40px rgba(2,6,23,0.15);
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Typography */
     h1 {
       margin: 0;
-      font-size: 28px;
+      font-size: 30px;
+      color: #111827;
     }
 
     p.lead {
       margin: 8px 0 18px;
       color: #374151;
+      font-size: 16px;
     }
 
+    /* Links */
     .links a {
       display: inline-block;
       margin: 6px 12px 0 0;
-      padding: 8px 14px;
+      padding: 10px 16px;
       background: #0366d6;
       color: #fff;
-      border-radius: 6px;
+      border-radius: 8px;
       font-size: 14px;
       text-decoration: none;
       transition: all 0.25s ease;
@@ -60,16 +83,42 @@
       box-shadow: 0 6px 14px rgba(0,0,0,0.15);
     }
 
+    /* QR code */
     .qr {
       float: right;
-      width: 120px;
+      width: 110px;
       margin-left: 18px;
+      border-radius: 8px;
     }
 
+    /* Footer */
     footer {
-      margin-top: 18px;
+      margin-top: 22px;
       color: #6b7280;
       font-size: 13px;
+      text-align: center;
+    }
+
+    footer a {
+      color: #0366d6;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .card {
+        padding: 22px;
+      }
+      h1 {
+        font-size: 24px;
+      }
+      .qr {
+        display: none; /* hide QR on very small screens */
+      }
     }
   </style>
 </head>
@@ -86,7 +135,10 @@
     </div>
 
     <hr/>
-    <p>I build practical systems to solve real problems — auto classroom management system, robotics simulations, and Python automation. Get to know my project details at my GitHub link.</p>
+    <p>
+      I build practical systems to solve real problems — auto classroom management systems, robotics simulations, and Python automation.  
+      Explore my work and project details on GitHub.
+    </p>
 
     <footer>
       Made by Thesegen — <a href="mailto:vathesegen@gmail.com">vathesegen@gmail.com</a>
