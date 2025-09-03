@@ -44,6 +44,7 @@
       backdrop-filter: blur(14px);
       box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
       animation: fadeUp 1s ease;
+      text-align: center;
     }
 
     @keyframes fadeUp {
@@ -56,6 +57,30 @@
       font-size: 32px;
       font-weight: 700;
       color: #2d1b46;
+    }
+
+    /* Typing text */
+    .typing {
+      margin-top: 10px;
+      font-size: 18px;
+      color: #6b2d84;
+      font-weight: 500;
+      white-space: nowrap;
+      border-right: 2px solid #6b2d84;
+      width: 0;
+      overflow: hidden;
+      animation: typing 3s steps(30, end) infinite alternate,
+                 blink 0.7s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      from, to { border-color: transparent; }
+      50% { border-color: #6b2d84; }
     }
 
     p.lead {
@@ -102,13 +127,6 @@
       box-shadow: 0 8px 20px rgba(142,45,226,0.35);
     }
 
-    .qr {
-      float: right;
-      width: 110px;
-      margin-left: 18px;
-      border-radius: 12px;
-    }
-
     hr {
       margin: 24px 0;
       border: 0;
@@ -142,14 +160,14 @@
     @media (max-width: 600px) {
       .card { padding: 22px; }
       h1 { font-size: 26px; }
-      .qr { display: none; }
     }
   </style>
 </head>
 <body>
   <div class="card">
-    <img class="qr" src="assets/qr.png" alt="QR code to portfolio">
     <h1>Thesegen Marimuthu</h1>
+    <div class="typing">Problem Solver • Builder • Innovator</div>
+
     <p class="lead">RoboDK Robotics Certified • Junior Python Developer • Creative problem solver who builds systems that outlast problems.</p>
 
     <div class="links">
