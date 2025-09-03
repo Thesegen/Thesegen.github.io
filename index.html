@@ -13,7 +13,7 @@
   <meta name="author" content="Thesegen Marimuthu" />
 
   <style>
-    /* Elegant animated purple-pink gradient background */
+    /* Vibrant animated gradient background */
     body {
       font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       margin: 0;
@@ -27,7 +27,6 @@
       animation: gradientShift 12s ease infinite;
       color: #111;
     }
-
     @keyframes gradientShift {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -46,38 +45,27 @@
       animation: fadeUp 1s ease;
       text-align: center;
     }
-
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* Typing effect for NAME */
     h1 {
       margin: 0;
       font-size: 32px;
       font-weight: 700;
       color: #2d1b46;
-    }
-
-    /* Typing text */
-    .typing {
-      margin-top: 10px;
-      font-size: 18px;
-      color: #6b2d84;
-      font-weight: 500;
+      display: inline-block;
       white-space: nowrap;
-      border-right: 2px solid #6b2d84;
-      width: 0;
       overflow: hidden;
-      animation: typing 3s steps(30, end) infinite alternate,
-                 blink 0.7s step-end infinite;
+      border-right: 3px solid #6b2d84;
+      animation: typing 3s steps(25, end) forwards, blink 0.7s step-end infinite;
     }
-
     @keyframes typing {
       from { width: 0; }
       to { width: 100%; }
     }
-
     @keyframes blink {
       from, to { border-color: transparent; }
       50% { border-color: #6b2d84; }
@@ -105,7 +93,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .links a::after {
       content: "";
       position: absolute;
@@ -117,11 +104,9 @@
       transform: skewX(-20deg);
       transition: left 0.6s ease;
     }
-
     .links a:hover::after {
       left: 100%;
     }
-
     .links a:hover {
       transform: translateY(-4px) scale(1.05);
       box-shadow: 0 8px 20px rgba(142,45,226,0.35);
@@ -140,18 +125,15 @@
       text-align: center;
       color: #4b3f5c;
     }
-
     footer span {
       font-weight: 500;
       color: #2d1b46;
     }
-
     footer a {
       color: #8e2de2;
       text-decoration: none;
       font-weight: 500;
     }
-
     footer a:hover {
       text-decoration: underline;
     }
@@ -166,7 +148,6 @@
 <body>
   <div class="card">
     <h1>Thesegen Marimuthu</h1>
-    <div class="typing">Problem Solver • Builder • Innovator</div>
 
     <p class="lead">RoboDK Robotics Certified • Junior Python Developer • Creative problem solver who builds systems that outlast problems.</p>
 
