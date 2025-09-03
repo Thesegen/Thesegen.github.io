@@ -13,151 +13,127 @@
   <meta name="author" content="Thesegen Marimuthu" />
 
   <style>
-    /* Vibrant animated gradient background */
     body {
       font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(-45deg, #a18cd1, #fbc2eb, #f9f9f9, #d9a7c7);
+      padding: 40px;
+      background: linear-gradient(135deg, #7b2ff7, #f107a3, #ff6ec4, #9d50bb);
       background-size: 400% 400%;
-      animation: gradientShift 12s ease infinite;
+      animation: gradientBG 15s ease infinite;
       color: #111;
+      overflow-x: hidden;
+      position: relative;
     }
-    @keyframes gradientShift {
+
+    @keyframes gradientBG {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
 
-    /* Glass card */
     .card {
       max-width: 760px;
-      width: 90%;
-      padding: 32px;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
-      animation: fadeUp 1s ease;
-      text-align: center;
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      margin: 80px auto;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 28px;
+      border-radius: 14px;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.2);
+      position: relative;
+      z-index: 2;
     }
 
-    /* Typing effect for NAME */
     h1 {
       margin: 0;
       font-size: 32px;
-      font-weight: 700;
-      color: #2d1b46;
-      display: inline-block;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 3px solid #6b2d84;
-      animation: typing 3s steps(25, end) forwards, blink 0.7s step-end infinite;
-    }
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-    @keyframes blink {
-      from, to { border-color: transparent; }
-      50% { border-color: #6b2d84; }
-    }
-
-    /* Static tagline */
-    .tagline {
-      margin-top: 10px;
-      font-size: 18px;
-      color: #6b2d84;
-      font-weight: 500;
+      color: #222;
     }
 
     p.lead {
-      margin: 12px 0 22px;
-      color: #4b3f5c;
-      font-size: 18px;
+      margin: 8px 0 20px;
+      color: #374151;
+      font-size: 17px;
     }
 
-    /* Modern gradient buttons */
     .links a {
       display: inline-block;
-      margin: 8px 12px 0 0;
-      padding: 10px 18px;
-      background: linear-gradient(135deg, #8e2de2, #c471ed, #f64f59);
+      margin: 6px 12px 0 0;
+      padding: 10px 16px;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
       color: #fff;
-      border-radius: 10px;
-      font-size: 15px;
+      border-radius: 8px;
+      font-size: 14px;
       text-decoration: none;
-      font-weight: 500;
-      transition: all 0.35s ease;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
       position: relative;
       overflow: hidden;
     }
-    .links a::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 200%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.25);
-      transform: skewX(-20deg);
-      transition: left 0.6s ease;
-    }
-    .links a:hover::after {
-      left: 100%;
-    }
+
     .links a:hover {
-      transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 8px 20px rgba(142,45,226,0.35);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+    }
+
+    .qr {
+      float: right;
+      width: 120px;
+      margin-left: 18px;
     }
 
     hr {
-      margin: 24px 0;
+      margin: 22px 0;
       border: 0;
-      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      border-top: 1px solid #e5e7eb;
     }
 
-    /* Sleek footer */
     footer {
-      margin-top: 20px;
-      font-size: 14px;
+      margin-top: 18px;
+      color: #6b7280;
+      font-size: 13px;
       text-align: center;
-      color: #4b3f5c;
-    }
-    footer span {
-      font-weight: 500;
-      color: #2d1b46;
-    }
-    footer a {
-      color: #8e2de2;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    footer a:hover {
-      text-decoration: underline;
     }
 
-    /* Mobile responsiveness */
-    @media (max-width: 600px) {
-      .card { padding: 22px; }
-      h1 { font-size: 26px; }
+    /* Mouse glow circle */
+    .cursor-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      box-shadow: 0 0 20px rgba(255,255,255,0.8);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease;
+      z-index: 1000;
+    }
+
+    /* Ripple effect */
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      transform: scale(0);
+      animation: rippleAnim 0.6s linear;
+      pointer-events: none;
+    }
+
+    @keyframes rippleAnim {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Thesegen Marimuthu</h1>
-    <div class="tagline">Problem Solver • Builder • Innovator</div>
+  <!-- Glowing cursor -->
+  <div class="cursor-glow"></div>
 
+  <div class="card">
+    <img class="qr" src="assets/qr.png" alt="QR code to portfolio">
+    <h1>Thesegen Marimuthu</h1>
     <p class="lead">RoboDK Robotics Certified • Junior Python Developer • Creative problem solver who builds systems that outlast problems.</p>
 
     <div class="links">
@@ -168,13 +144,37 @@
 
     <hr/>
     <p>
-      I design practical solutions that simplify complexity — from auto classroom management systems to robotics simulations and Python automation.  
+      I design practical solutions that simplify complexity — from auto classroom management systems to robotics simulations and Python automation. 
       Constantly learning and adapting, I aim to bring clarity, creativity, and problem-solving energy into every project I take on.
     </p>
 
     <footer>
-      © <span>2025</span> Thesegen Marimuthu • <a href="mailto:vathesegen@gmail.com">vathesegen@gmail.com</a>
+      © 2025 Thesegen Marimuthu • <a href="mailto:vathesegen@gmail.com">vathesegen@gmail.com</a>
     </footer>
   </div>
+
+  <script>
+    // Glowing cursor effect
+    const cursor = document.querySelector('.cursor-glow');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.pageX + 'px';
+      cursor.style.top = e.pageY + 'px';
+    });
+
+    // Ripple effect
+    document.addEventListener('click', e => {
+      const ripple = document.createElement('span');
+      ripple.classList.add('ripple');
+      document.body.appendChild(ripple);
+
+      ripple.style.left = e.pageX - 10 + 'px';
+      ripple.style.top = e.pageY - 10 + 'px';
+      ripple.style.width = ripple.style.height = '20px';
+
+      setTimeout(() => {
+        ripple.remove();
+      }, 600);
+    });
+  </script>
 </body>
 </html>
