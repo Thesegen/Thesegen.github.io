@@ -160,7 +160,7 @@
       text-decoration: underline;
     }
 
-    /* Glowing cursor trail */
+    /* Glowing cursor trail with breathing effect */
     .cursor {
       position: fixed;
       top: 0;
@@ -173,6 +173,17 @@
       transform: translate(-50%, -50%);
       mix-blend-mode: screen;
       z-index: 1;
+      animation: breathe 2.5s ease-in-out infinite;
+    }
+    @keyframes breathe {
+      0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.7;
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.4);
+        opacity: 1;
+      }
     }
 
     @media (max-width: 600px) {
@@ -222,7 +233,7 @@
       });
     });
 
-    // Glowing cursor follow
+    // Cursor follow
     const cursor = document.querySelector('.cursor');
     document.addEventListener('mousemove', e => {
       cursor.style.top = e.clientY + 'px';
