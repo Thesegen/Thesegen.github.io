@@ -12,11 +12,11 @@
   <meta name="description" content="Thesegen Marimuthu | RoboDK Robotics Certified • Junior Python Developer • Creative problem solver building systems that turn challenges into solutions." />
   <meta name="author" content="Thesegen Marimuthu" />
 
-  <!-- Font Awesome for icons -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    /* Vibrant animated gradient background */
+    /* Vibrant animated gradient background with parallax */
     body {
       font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       margin: 0;
@@ -30,6 +30,11 @@
       animation: gradientShift 12s ease infinite;
       color: #111;
       overflow-x: hidden;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    body.loaded {
+      opacity: 1;
     }
     @keyframes gradientShift {
       0% { background-position: 0% 50%; }
@@ -37,29 +42,25 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Glass card */
+    /* Glass card with float + tilt */
     .card {
       max-width: 760px;
       width: 100%;
+      margin: 0 auto;
       padding: 32px;
       border-radius: 18px;
       background: rgba(255, 255, 255, 0.7);
       backdrop-filter: blur(14px);
       box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
-      animation: fadeUp 1s ease;
+      animation: float 6s ease-in-out infinite;
       text-align: center;
       position: relative;
       z-index: 2;
-      transition: transform 0.2s ease, box-shadow 0.3s ease;
-      transform-style: preserve-3d;
+      transition: transform 0.2s ease;
     }
-    .card.tilt {
-      transform: perspective(1000px) rotateX(var(--rx)) rotateY(var(--ry)) scale(1.02);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
     }
 
     /* Typing effect for NAME */
@@ -96,7 +97,7 @@
       font-size: 18px;
     }
 
-    /* Modern gradient buttons with ripple + icons */
+    /* Buttons with ripple */
     .links a {
       display: inline-flex;
       align-items: center;
@@ -114,17 +115,9 @@
       position: relative;
       overflow: hidden;
     }
-    .links a i {
-      font-size: 16px;
-      transition: text-shadow 0.35s ease, transform 0.35s ease;
-    }
     .links a:hover {
       transform: translateY(-4px) scale(1.05);
       box-shadow: 0 8px 20px rgba(142,45,226,0.35);
-    }
-    .links a:hover i {
-      text-shadow: 0 0 8px #fff, 0 0 12px #fff;
-      transform: scale(1.2);
     }
     .links a span.ripple {
       position: absolute;
@@ -135,10 +128,7 @@
       pointer-events: none;
     }
     @keyframes rippleAnim {
-      to {
-        transform: scale(4);
-        opacity: 0;
-      }
+      to { transform: scale(4); opacity: 0; }
     }
 
     hr {
@@ -153,69 +143,46 @@
       text-align: center;
       color: #4b3f5c;
     }
-    footer span {
-      font-weight: 500;
-      color: #2d1b46;
-    }
-    footer a {
-      color: #8e2de2;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    footer a:hover {
-      text-decoration: underline;
-    }
+    footer span { font-weight: 500; color: #2d1b46; }
+    footer a { color: #8e2de2; text-decoration: none; font-weight: 500; }
+    footer a:hover { text-decoration: underline; }
 
-    /* Glowing cursor trail with breathing effect */
-    .cursor {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,0,150,0.6), rgba(142,45,226,0.4));
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      mix-blend-mode: screen;
-      z-index: 1;
-      animation: breathe 2.5s ease-in-out infinite;
-    }
-    @keyframes breathe {
-      0%, 100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0.7;
-      }
-      50% {
-        transform: translate(-50%, -50%) scale(1.4);
-        opacity: 1;
-      }
-    }
-
-    /* Fade-in on scroll */
-    .fade-in {
+    /* Scroll fade-slide */
+    .fade-slide {
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease-out;
+      transform: translateY(40px) rotateX(5deg);
+      transition: all 0.9s ease-out;
     }
-    .fade-in.show {
+    .fade-slide.show {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) rotateX(0);
     }
 
+    /* Cursor glow trail */
+    .trail {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,0,150,0.5), rgba(142,45,226,0.3));
+      pointer-events: none;
+      mix-blend-mode: screen;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Mobile breathing margin */
     @media (max-width: 600px) {
-      .card {
-        padding: 24px;
-        margin: 16px; /* 🔥 breathing room on mobile */
-      }
+      body { padding: 20px; }
+      .card { padding: 24px; margin: 0 12px; }
       h1 { font-size: 26px; }
     }
   </style>
 </head>
 <body>
-  <div class="cursor"></div>
+  <!-- Cursor trails -->
+  <div id="cursor-trails"></div>
 
-  <div class="card fade-in">
+  <div class="card fade-slide">
     <h1>Thesegen Marimuthu</h1>
     <div class="tagline">Problem Solver • Builder • Innovator</div>
 
@@ -239,6 +206,18 @@
   </div>
 
   <script>
+    // Fade-slide on scroll
+    const faders = document.querySelectorAll('.fade-slide');
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    faders.forEach(fader => appearOnScroll.observe(fader));
+
     // Ripple effect
     document.querySelectorAll('.links a').forEach(button => {
       button.addEventListener('click', function (e) {
@@ -253,43 +232,54 @@
       });
     });
 
-    // Cursor follow
-    const cursor = document.querySelector('.cursor');
-    document.addEventListener('mousemove', e => {
-      cursor.style.top = e.clientY + 'px';
-      cursor.style.left = e.clientX + 'px';
+    // Cursor trailing glow
+    const trails = [];
+    for (let i = 0; i < 8; i++) {
+      const t = document.createElement("div");
+      t.className = "trail";
+      document.body.appendChild(t);
+      trails.push({ el: t, x: 0, y: 0 });
+    }
+    document.addEventListener("mousemove", e => {
+      trails[0].x = e.clientX;
+      trails[0].y = e.clientY;
     });
+    function animate() {
+      for (let i = 1; i < trails.length; i++) {
+        trails[i].x += (trails[i - 1].x - trails[i].x) * 0.2;
+        trails[i].y += (trails[i - 1].y - trails[i].y) * 0.2;
+        trails[i].el.style.left = trails[i].x + "px";
+        trails[i].el.style.top = trails[i].y + "px";
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
 
-    // 3D tilt effect
+    // Tilt 3D effect on card
     const card = document.querySelector('.card');
-    card.addEventListener('mousemove', e => {
+    card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * 6 + "deg";
-      const rotateY = ((x - centerX) / centerX) * -6 + "deg";
-      card.style.setProperty('--rx', rotateX);
-      card.style.setProperty('--ry', rotateY);
-      card.classList.add('tilt');
+      const rotateX = ((y / rect.height) - 0.5) * 20;
+      const rotateY = ((x / rect.width) - 0.5) * -20;
+      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     });
     card.addEventListener('mouseleave', () => {
-      card.classList.remove('tilt');
+      card.style.transform = 'rotateX(0) rotateY(0)';
     });
 
-    // Fade-in on scroll
-    const faders = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
+    // Parallax background
+    document.addEventListener('mousemove', e => {
+      const x = (e.clientX / window.innerWidth) * 50;
+      const y = (e.clientY / window.innerHeight) * 50;
+      document.body.style.backgroundPosition = `${50 - x}% ${50 - y}%`;
+    });
 
-    faders.forEach(fade => observer.observe(fade));
+    // Smooth page load
+    window.addEventListener("load", () => {
+      document.body.classList.add("loaded");
+    });
   </script>
 </body>
 </html>
