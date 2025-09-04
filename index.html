@@ -37,38 +37,42 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Outer card container */
+    /* 3D tilt wrapper */
     .card {
       max-width: 760px;
       width: 100%;
+      margin: auto;
       perspective: 1200px;
-      margin: 20px;
     }
 
-    /* Tilt + float wrapper */
-    .card-tilt {
-      will-change: transform;
-      transform-style: preserve-3d;
-      animation: float 6s ease-in-out infinite;
-      transition: transform 0.25s ease;
-    }
-
-    /* Glass card inner */
+    /* Glass inner card with crisp text */
     .card-inner {
+      position: relative;
       padding: 32px;
       border-radius: 18px;
-      background: rgba(255, 255, 255, 0.8); /* higher opacity for sharper text */
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.15);
+      overflow: hidden;
       box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
-      text-align: center;
+      transform-style: preserve-3d;
       transform: translateZ(60px);
+      transition: transform 0.15s ease;
+
+      /* Smooth HD text rendering */
       -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: geometricPrecision;
+      backface-visibility: hidden;
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
+    /* Blur background sits separately */
+    .card-inner::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: inherit;
+      backdrop-filter: blur(18px) saturate(180%);
+      z-index: -1;
     }
 
     /* Typing effect for NAME */
@@ -187,7 +191,7 @@
       pointer-events: none;
       transform: translate(-50%, -50%);
       mix-blend-mode: screen;
-      z-index: 10;
+      z-index: 1;
       animation: breathe 2.5s ease-in-out infinite;
     }
     @keyframes breathe {
@@ -201,19 +205,19 @@
       }
     }
 
-    /* Fade-in scroll effect */
-    .fade-slide {
+    /* Scroll fade-in animation */
+    .fade-in {
       opacity: 0;
       transform: translateY(30px);
-      transition: opacity 0.9s ease, transform 0.9s ease;
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
-    .fade-slide.visible {
+    .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
     @media (max-width: 600px) {
-      .card { margin: 30px 20px; } /* breathing space */
+      body { padding: 16px; }
       .card-inner { padding: 24px; }
       h1 { font-size: 26px; }
     }
@@ -222,30 +226,28 @@
 <body>
   <div class="cursor"></div>
 
-  <div class="card fade-slide">
-    <div class="card-tilt">
-      <div class="card-inner">
-        <h1>Thesegen Marimuthu</h1>
-        <div class="tagline">Problem Solver • Builder • Innovator</div>
+  <div class="card fade-in">
+    <div class="card-inner">
+      <h1>Thesegen Marimuthu</h1>
+      <div class="tagline">Problem Solver • Builder • Innovator</div>
 
-        <p class="lead">RoboDK Robotics Certified • Junior Python Developer • Creative problem solver who builds systems that outlast problems.</p>
+      <p class="lead">RoboDK Robotics Certified • Junior Python Developer • Creative problem solver who builds systems that outlast problems.</p>
 
-        <div class="links">
-          <a href="https://www.linkedin.com/in/thesegen-marimuthu" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-          <a href="https://github.com/thesegen" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-          <a href="links.html"><i class="fas fa-link"></i> Portfolio</a>
-        </div>
-
-        <hr/>
-        <p>
-          I design practical solutions that simplify complexity — from auto classroom management systems to robotics simulations and Python automation.  
-          Constantly learning and adapting, I aim to bring clarity, creativity, and problem-solving energy into every project I take on.
-        </p>
-
-        <footer>
-          © <span>2025</span> Thesegen Marimuthu • <a href="mailto:vathesegen@gmail.com">vathesegen@gmail.com</a>
-        </footer>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/thesegen-marimuthu" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/thesegen" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="links.html"><i class="fas fa-link"></i> Portfolio</a>
       </div>
+
+      <hr/>
+      <p>
+        I design practical solutions that simplify complexity — from auto classroom management systems to robotics simulations and Python automation.  
+        Constantly learning and adapting, I aim to bring clarity, creativity, and problem-solving energy into every project I take on.
+      </p>
+
+      <footer>
+        © <span>2025</span> Thesegen Marimuthu • <a href="mailto:vathesegen@gmail.com">vathesegen@gmail.com</a>
+      </footer>
     </div>
   </div>
 
@@ -271,28 +273,35 @@
       cursor.style.left = e.clientX + 'px';
     });
 
-    // Tilt effect
+    // Fade-in on scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    faders.forEach(el => observer.observe(el));
+
+    // 3D tilt effect
     const card = document.querySelector('.card');
-    const tilt = document.querySelector('.card-tilt');
-    card.addEventListener('mousemove', (e) => {
+    const cardInner = document.querySelector('.card-inner');
+    card.addEventListener('mousemove', e => {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      const rotateX = ((y / rect.height) - 0.5) * 15;
-      const rotateY = ((x / rect.width) - 0.5) * -15;
-      tilt.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * 10;
+      const rotateY = ((x - centerX) / centerX) * 10;
+      cardInner.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) translateZ(60px)`;
     });
     card.addEventListener('mouseleave', () => {
-      tilt.style.transform = 'rotateX(0) rotateY(0)';
+      cardInner.style.transform = "rotateX(0) rotateY(0) translateZ(60px)";
     });
-
-    // Scroll fade-in
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.2 });
-    document.querySelectorAll('.fade-slide').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
