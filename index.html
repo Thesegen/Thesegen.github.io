@@ -50,6 +50,12 @@
       text-align: center;
       position: relative;
       z-index: 2;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      transform-style: preserve-3d;
+    }
+    .card.tilt {
+      transform: perspective(1000px) rotateX(var(--rx)) rotateY(var(--ry)) scale(1.02);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
     }
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
@@ -186,8 +192,22 @@
       }
     }
 
+    /* Fade-in on scroll */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     @media (max-width: 600px) {
-      .card { padding: 24px; }
+      .card {
+        padding: 24px;
+        margin: 16px; /* 🔥 breathing room on mobile */
+      }
       h1 { font-size: 26px; }
     }
   </style>
@@ -195,7 +215,7 @@
 <body>
   <div class="cursor"></div>
 
-  <div class="card">
+  <div class="card fade-in">
     <h1>Thesegen Marimuthu</h1>
     <div class="tagline">Problem Solver • Builder • Innovator</div>
 
@@ -239,6 +259,37 @@
       cursor.style.top = e.clientY + 'px';
       cursor.style.left = e.clientX + 'px';
     });
+
+    // 3D tilt effect
+    const card = document.querySelector('.card');
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * 6 + "deg";
+      const rotateY = ((x - centerX) / centerX) * -6 + "deg";
+      card.style.setProperty('--rx', rotateX);
+      card.style.setProperty('--ry', rotateY);
+      card.classList.add('tilt');
+    });
+    card.addEventListener('mouseleave', () => {
+      card.classList.remove('tilt');
+    });
+
+    // Fade-in on scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    faders.forEach(fade => observer.observe(fade));
   </script>
 </body>
 </html>
