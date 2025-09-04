@@ -5,122 +5,95 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Thesegen Marimuthu — Problem Solver & Tech Builder</title>
 
-  <!-- Google site verification -->
-  <meta name="google-site-verification" content="7YflHmwVOmBsp4ATQMZUK7tA9q19CfMW6uwwVLa_EAc" />
-
-  <!-- SEO Meta -->
   <meta name="description" content="Thesegen Marimuthu | RoboDK Robotics Certified • Junior Python Developer • Creative problem solver building systems that turn challenges into solutions." />
   <meta name="author" content="Thesegen Marimuthu" />
 
-  <!-- Font Awesome for icons -->
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    /* Vibrant animated gradient background */
+    /* Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
       font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      margin: 0;
-      padding: 20px;
-      min-height: 100vh;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(-45deg, #a18cd1, #fbc2eb, #f9f9f9, #d9a7c7);
-      background-size: 400% 400%;
-      animation: gradientShift 12s ease infinite;
-      color: #111;
-      overflow-x: hidden;
-    }
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      overflow: hidden;
+      background: #111;
+      color: #222;
     }
 
-    /* 3D tilt wrapper */
+    /* Canvas liquid background */
+    #liquid {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    /* Card wrapper */
     .card {
       max-width: 760px;
       width: 100%;
       margin: auto;
       perspective: 1200px;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    /* Glass inner card with crisp centered content */
+    /* Glass inner */
     .card-inner {
-      position: relative;
       padding: 32px;
       border-radius: 18px;
       background: rgba(255, 255, 255, 0.15);
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
-      text-align: center;
-      transition: transform 0.25s ease;
-      transform-style: preserve-3d;
-
-      /* Smooth HD text rendering */
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-rendering: geometricPrecision;
-      backface-visibility: hidden;
-    }
-
-    /* Blur background sits separately */
-    .card-inner::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: inherit;
       backdrop-filter: blur(18px) saturate(180%);
-      z-index: -1;
-      border-radius: 18px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+      text-align: center;
+      transform-style: preserve-3d;
+      transition: transform 0.2s ease;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
     }
 
-    /* Typing effect for NAME */
+    /* Typing effect for name */
     h1 {
-      margin: 0 auto;
       font-size: 32px;
       font-weight: 700;
-      color: #2d1b46;
-      display: inline-block;
+      color: #fff;
       white-space: nowrap;
       overflow: hidden;
-      border-right: 3px solid #6b2d84;
+      border-right: 3px solid #fff;
       animation: typing 3s steps(25, end) forwards, blink 0.7s step-end infinite;
     }
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-    @keyframes blink {
-      from, to { border-color: transparent; }
-      50% { border-color: #6b2d84; }
-    }
+    @keyframes typing { from { width: 0; } to { width: 100%; } }
+    @keyframes blink { 50% { border-color: transparent; } }
 
     .tagline {
       margin-top: 10px;
       font-size: 18px;
-      color: #6b2d84;
       font-weight: 500;
+      color: #eee;
     }
 
     p.lead {
-      margin: 12px 0 22px;
-      color: #4b3f5c;
-      font-size: 18px;
+      margin: 14px 0 20px;
+      color: #ddd;
+      font-size: 17px;
     }
 
-    /* Modern gradient buttons with ripple + icons */
-    .links {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
+    /* Buttons */
     .links a {
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      margin: 6px;
       padding: 10px 18px;
       background: linear-gradient(135deg, #8e2de2, #c471ed, #f64f59);
       color: #fff;
@@ -128,93 +101,30 @@
       font-size: 15px;
       text-decoration: none;
       font-weight: 500;
-      transition: all 0.35s ease;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       position: relative;
       overflow: hidden;
     }
-    .links a i {
-      font-size: 16px;
-      transition: text-shadow 0.35s ease, transform 0.35s ease;
-    }
     .links a:hover {
-      transform: translateY(-4px) scale(1.05);
+      transform: translateY(-3px) scale(1.05);
       box-shadow: 0 8px 20px rgba(142,45,226,0.35);
-    }
-    .links a:hover i {
-      text-shadow: 0 0 8px #fff, 0 0 12px #fff;
-      transform: scale(1.2);
-    }
-    .links a span.ripple {
-      position: absolute;
-      border-radius: 50%;
-      transform: scale(0);
-      animation: rippleAnim 0.6s linear;
-      background: rgba(255, 255, 255, 0.6);
-      pointer-events: none;
-    }
-    @keyframes rippleAnim {
-      to {
-        transform: scale(4);
-        opacity: 0;
-      }
     }
 
     hr {
-      margin: 24px 0;
+      margin: 22px 0;
       border: 0;
-      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      border-top: 1px solid rgba(255,255,255,0.2);
     }
 
     footer {
-      margin-top: 20px;
+      margin-top: 15px;
       font-size: 14px;
-      text-align: center;
-      color: #4b3f5c;
-    }
-    footer span {
-      font-weight: 500;
-      color: #2d1b46;
-    }
-    footer a {
-      color: #8e2de2;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    footer a:hover {
-      text-decoration: underline;
+      color: #eee;
     }
 
-    /* Glowing cursor trail with breathing effect */
-    .cursor {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,0,150,0.6), rgba(142,45,226,0.4));
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      mix-blend-mode: screen;
-      z-index: 1;
-      animation: breathe 2.5s ease-in-out infinite;
-    }
-    @keyframes breathe {
-      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
-      50% { transform: translate(-50%, -50%) scale(1.4); opacity: 1; }
-    }
-
-    /* Scroll fade-in animation */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    /* Fade-in on scroll */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: 0.8s; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 600px) {
       body { padding: 16px; }
@@ -224,84 +134,66 @@
   </style>
 </head>
 <body>
-  <div class="cursor"></div>
+  <!-- Liquid BG -->
+  <canvas id="liquid"></canvas>
 
+  <!-- Content -->
   <div class="card fade-in">
     <div class="card-inner">
       <h1>Thesegen Marimuthu</h1>
       <div class="tagline">Problem Solver • Builder • Innovator</div>
-
       <p class="lead">RoboDK Robotics Certified • Junior Python Developer • Creative problem solver who builds systems that outlast problems.</p>
-
       <div class="links">
         <a href="https://www.linkedin.com/in/thesegen-marimuthu" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
         <a href="https://github.com/thesegen" target="_blank"><i class="fab fa-github"></i> GitHub</a>
         <a href="links.html"><i class="fas fa-link"></i> Portfolio</a>
       </div>
-
       <hr/>
-      <p>
-        I design practical solutions that simplify complexity — from auto classroom management systems to robotics simulations and Python automation.  
-        Constantly learning and adapting, I aim to bring clarity, creativity, and problem-solving energy into every project I take on.
-      </p>
-
-      <footer>
-        © <span>2025</span> Thesegen Marimuthu • <a href="mailto:vathesegen@gmail.com">vathesegen@gmail.com</a>
-      </footer>
+      <p>I design practical solutions that simplify complexity — from classroom automation to robotics simulations. Always learning, always building.</p>
+      <footer>© 2025 Thesegen Marimuthu • <a href="mailto:vathesegen@gmail.com" style="color:#fff;">vathesegen@gmail.com</a></footer>
     </div>
   </div>
 
   <script>
-    // Ripple effect
-    document.querySelectorAll('.links a').forEach(button => {
-      button.addEventListener('click', function (e) {
-        const ripple = document.createElement('span');
-        ripple.classList.add('ripple');
-        const rect = button.getBoundingClientRect();
-        ripple.style.width = ripple.style.height = Math.max(rect.width, rect.height) + 'px';
-        ripple.style.left = e.clientX - rect.left - (parseInt(ripple.style.width) / 2) + 'px';
-        ripple.style.top = e.clientY - rect.top - (parseInt(ripple.style.height) / 2) + 'px';
-        button.appendChild(ripple);
-        setTimeout(() => ripple.remove(), 600);
+    // Liquid blob background
+    const canvas = document.getElementById("liquid");
+    const ctx = canvas.getContext("2d");
+    let w, h;
+    function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
+    window.addEventListener("resize", resize); resize();
+
+    let blobs = Array.from({length: 10}, () => ({
+      x: Math.random()*w,
+      y: Math.random()*h,
+      r: 120 + Math.random()*80,
+      dx: (Math.random()-0.5)*1,
+      dy: (Math.random()-0.5)*1
+    }));
+
+    function draw() {
+      ctx.clearRect(0,0,w,h);
+      blobs.forEach(b=>{
+        b.x+=b.dx; b.y+=b.dy;
+        if(b.x<0||b.x>w) b.dx*=-1;
+        if(b.y<0||b.y>h) b.dy*=-1;
+        let grad = ctx.createRadialGradient(b.x,b.y,0,b.x,b.y,b.r);
+        grad.addColorStop(0,"rgba(142,45,226,0.6)");
+        grad.addColorStop(1,"rgba(251,194,235,0)");
+        ctx.fillStyle = grad;
+        ctx.beginPath(); ctx.arc(b.x,b.y,b.r,0,Math.PI*2); ctx.fill();
       });
-    });
+      requestAnimationFrame(draw);
+    }
+    draw();
 
-    // Cursor follow
-    const cursor = document.querySelector('.cursor');
-    document.addEventListener('mousemove', e => {
-      cursor.style.top = e.clientY + 'px';
-      cursor.style.left = e.clientX + 'px';
-    });
-
-    // Fade-in on scroll
+    // Scroll fade-in
     const faders = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
+    const observer = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); }
       });
-    }, { threshold: 0.2 });
-
-    faders.forEach(el => observer.observe(el));
-
-    // 3D tilt effect (fixed version)
-    const card = document.querySelector('.card');
-    const cardInner = document.querySelector('.card-inner');
-    card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * 10;
-      const rotateY = ((x - centerX) / centerX) * 10;
-      cardInner.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
-    });
-    card.addEventListener('mouseleave', () => {
-      cardInner.style.transform = "rotateX(0) rotateY(0)";
-    });
+    },{threshold:0.2});
+    faders.forEach(el=>observer.observe(el));
   </script>
 </body>
 </html>
