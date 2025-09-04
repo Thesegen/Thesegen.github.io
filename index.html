@@ -16,19 +16,33 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    /* Vibrant animated gradient background */
+    /* ---------------------------
+       Page & animated gradient
+       --------------------------- */
+    :root{
+      --accent-1: #a18cd1;
+      --accent-2: #fbc2eb;
+      --accent-3: #d9a7c7;
+      --card-bg: rgba(255,255,255,0.12);
+      --card-blur: 16px;
+    }
+
+    html,body{height:100%}
     body {
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       margin: 0;
       padding: 20px;
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(-45deg, #a18cd1, #fbc2eb, #f9f9f9, #d9a7c7);
+      background: linear-gradient(-45deg, var(--accent-1), var(--accent-2), #f9f9f9, var(--accent-3));
       background-size: 400% 400%;
       animation: gradientShift 12s ease infinite;
       color: #111;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: geometricPrecision;
       overflow-x: hidden;
     }
     @keyframes gradientShift {
@@ -37,267 +51,321 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Card wrapper for 3D tilt */
+    /* ---------------------------
+       Card + tilt container
+       --------------------------- */
     .card {
-      max-width: 760px;
       width: 100%;
-      margin: auto;
+      max-width: 760px;
+      margin: 20px;
       perspective: 1200px;
+      position: relative; /* required for absolute children */
     }
 
-    /* Background glass layer (with blur) */
+    .card-tilt {
+      position: relative;
+      transform-style: preserve-3d;
+      will-change: transform;
+      transition: transform 220ms cubic-bezier(.2,.95,.2,1);
+    }
+
+    /* Background layer (blur + shadow) - will be tilted */
     .card-bg {
       position: absolute;
       inset: 0;
       border-radius: 18px;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(18px) saturate(180%);
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+      background: var(--card-bg);
+      backdrop-filter: blur(var(--card-blur)) saturate(160%);
+      box-shadow: 0 14px 40px rgba(9,18,35,0.12);
       z-index: 0;
+      transform-origin: center;
       will-change: transform;
+      pointer-events: none;
     }
 
-    /* Foreground (text/content) stays crisp */
+    /* Foreground content — stays crisp (no heavy transforms) */
     .card-inner {
       position: relative;
+      z-index: 2;
       padding: 32px;
       border-radius: 18px;
-      z-index: 1;
-
-      /* Crisp ultra-HD text */
+      /* don't apply blur or large transforms here so text stays sharp */
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      box-shadow: none;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: geometricPrecision;
       backface-visibility: hidden;
     }
 
-    /* Typing effect for NAME */
-    h1 {
-      margin: 0;
-      font-size: 32px;
-      font-weight: 700;
-      color: #2d1b46;
-      display: inline-block;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 3px solid #6b2d84;
-      animation: typing 3s steps(25, end) forwards, blink 0.7s step-end infinite;
+    /* subtle float applied to the background only to avoid text jitter */
+    @keyframes floatBg {
+      0%,100%{ transform: translateY(0) }
+      50%{ transform: translateY(-10px) }
     }
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-    @keyframes blink {
-      from, to { border-color: transparent; }
-      50% { border-color: #6b2d84; }
+    .card-bg.float {
+      animation: floatBg 6s ease-in-out infinite;
     }
 
-    .tagline {
-      margin-top: 10px;
-      font-size: 18px;
-      color: #6b2d84;
-      font-weight: 500;
+    /* ---------------------------
+       Headline / tagline / text
+       --------------------------- */
+    h1{
+      margin:0;
+      font-size:32px;
+      font-weight:700;
+      color:#24183a;
+      display:inline-block;
+      white-space:nowrap;
+      overflow:hidden;
+      border-right:3px solid #6b2d84;
+      animation: typing 2.8s steps(26,end) forwards, blink 0.75s step-end infinite;
+      -webkit-font-smoothing: antialiased;
+    }
+    @keyframes typing{ from { width:0 } to { width:100% } }
+    @keyframes blink { 50% { border-color: transparent } }
+
+    .tagline{
+      margin-top:10px;
+      font-size:18px;
+      color:#6b2d84;
+      font-weight:500;
     }
 
-    p.lead {
-      margin: 12px 0 22px;
-      color: #4b3f5c;
-      font-size: 18px;
+    p.lead{
+      margin:12px 0 22px;
+      color:#3b3450;
+      font-size:17px;
+      line-height:1.5;
     }
 
-    /* Modern gradient buttons with ripple + icons */
-    .links a {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin: 8px 12px 0 0;
-      padding: 10px 18px;
-      background: linear-gradient(135deg, #8e2de2, #c471ed, #f64f59);
-      color: #fff;
-      border-radius: 10px;
-      font-size: 15px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.35s ease;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-      position: relative;
-      overflow: hidden;
+    /* ---------------------------
+       Buttons / ripple / icons
+       --------------------------- */
+    .links{ margin-top:8px }
+    .links a{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin:8px 10px 0 0;
+      padding:10px 18px;
+      background: linear-gradient(135deg,#8e2de2,#c471ed,#f64f59);
+      color:#fff;
+      border-radius:10px;
+      font-size:15px;
+      font-weight:500;
+      text-decoration:none;
+      box-shadow: 0 6px 18px rgba(18,12,40,0.08);
+      position:relative;
+      overflow:hidden;
+      transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s;
     }
-    .links a i {
-      font-size: 16px;
-      transition: text-shadow 0.35s ease, transform 0.35s ease;
+    .links a i{ font-size:16px; transition: transform .25s, text-shadow .25s }
+    .links a:hover{ transform: translateY(-4px) scale(1.03); box-shadow: 0 14px 30px rgba(18,12,40,0.12) }
+    .links a:hover i{ transform: scale(1.18); text-shadow: 0 0 10px rgba(255,255,255,0.9) }
+
+    /* ripple element appended by JS */
+    .ripple{
+      position:absolute;
+      border-radius:50%;
+      transform:scale(0);
+      background: rgba(255,255,255,0.65);
+      pointer-events:none;
+      animation: rippleAnim .6s linear;
     }
-    .links a:hover {
-      transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 8px 20px rgba(142,45,226,0.35);
+    @keyframes rippleAnim{ to{ transform:scale(4); opacity:0 } }
+
+    /* ---------------------------
+       cursor (breathing) - small and subtle
+       --------------------------- */
+    .cursor{
+      position:fixed;
+      width:20px;
+      height:20px;
+      border-radius:50%;
+      background: radial-gradient(circle, rgba(255,0,150,0.55), rgba(142,45,226,0.32));
+      pointer-events:none;
+      transform:translate(-50%,-50%);
+      mix-blend-mode:screen;
+      z-index: 60;
+      animation: breathe 2.4s ease-in-out infinite;
+      will-change: transform, opacity;
     }
-    .links a:hover i {
-      text-shadow: 0 0 8px #fff, 0 0 12px #fff;
-      transform: scale(1.2);
-    }
-    .links a span.ripple {
-      position: absolute;
-      border-radius: 50%;
-      transform: scale(0);
-      animation: rippleAnim 0.6s linear;
-      background: rgba(255, 255, 255, 0.6);
-      pointer-events: none;
-    }
-    @keyframes rippleAnim {
-      to {
-        transform: scale(4);
-        opacity: 0;
-      }
+    @keyframes breathe{
+      0%,100%{ transform:translate(-50%,-50%) scale(1); opacity:.7 }
+      50%{ transform:translate(-50%,-50%) scale(1.5); opacity:1 }
     }
 
-    hr {
-      margin: 24px 0;
-      border: 0;
-      border-top: 1px solid rgba(0, 0, 0, 0.08);
-    }
+    /* fade-in for initial entrance */
+    .fade-in{ opacity:0; transform:translateY(20px); transition: opacity .9s ease, transform .9s ease }
+    .fade-in.visible{ opacity:1; transform:translateY(0) }
 
-    footer {
-      margin-top: 20px;
-      font-size: 14px;
-      text-align: center;
-      color: #4b3f5c;
-    }
-    footer span {
-      font-weight: 500;
-      color: #2d1b46;
-    }
-    footer a {
-      color: #8e2de2;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* Glowing cursor trail with breathing effect */
-    .cursor {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,0,150,0.6), rgba(142,45,226,0.4));
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      mix-blend-mode: screen;
-      z-index: 10;
-      animation: breathe 2.5s ease-in-out infinite;
-    }
-    @keyframes breathe {
-      0%, 100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0.7;
-      }
-      50% {
-        transform: translate(-50%, -50%) scale(1.4);
-        opacity: 1;
-      }
-    }
-
-    /* Scroll fade-in animation */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 600px) {
-      body { padding: 16px; }
-      .card-inner { padding: 24px; }
-      h1 { font-size: 26px; }
+    /* responsive breathing margin */
+    @media (max-width:600px){
+      body{ padding:16px }
+      .card{ margin:16px }
+      .card-inner{ padding:20px }
+      h1{ font-size:26px }
     }
   </style>
 </head>
 <body>
-  <div class="cursor"></div>
+  <!-- breathing cursor -->
+  <div class="cursor" id="cursor"></div>
 
-  <div class="card fade-in">
-    <div class="card-bg"></div>
-    <div class="card-inner">
-      <h1>Thesegen Marimuthu</h1>
-      <div class="tagline">Problem Solver • Builder • Innovator</div>
+  <!-- card structure: card -> card-tilt -> (bg + inner) -->
+  <div class="card fade-in" id="card">
+    <div class="card-tilt" id="cardTilt">
+      <div class="card-bg" id="cardBg"></div>
 
-      <p class="lead">RoboDK Robotics Certified • Junior Python Developer • Creative problem solver who builds systems that outlast problems.</p>
+      <div class="card-inner">
+        <h1>Thesegen Marimuthu</h1>
+        <div class="tagline">Problem Solver • Builder • Innovator</div>
 
-      <div class="links">
-        <a href="https://www.linkedin.com/in/thesegen-marimuthu" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="https://github.com/thesegen" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-        <a href="links.html"><i class="fas fa-link"></i> Portfolio</a>
+        <p class="lead">RoboDK Robotics Certified • Junior Python Developer • Creative problem solver who builds systems that outlast problems.</p>
+
+        <div class="links">
+          <a href="https://www.linkedin.com/in/thesegen-marimuthu" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          <a href="https://github.com/thesegen" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+          <a href="links.html"><i class="fas fa-link"></i> Portfolio</a>
+        </div>
+
+        <hr/>
+        <p>
+          I design practical solutions that simplify complexity — from auto classroom management systems to robotics simulations and Python automation.  
+          Constantly learning and adapting, I aim to bring clarity, creativity, and problem-solving energy into every project I take on.
+        </p>
+
+        <footer>
+          © <span>2025</span> Thesegen Marimuthu • <a href="mailto:vathesegen@gmail.com">vathesegen@gmail.com</a>
+        </footer>
       </div>
-
-      <hr/>
-      <p>
-        I design practical solutions that simplify complexity — from auto classroom management systems to robotics simulations and Python automation.  
-        Constantly learning and adapting, I aim to bring clarity, creativity, and problem-solving energy into every project I take on.
-      </p>
-
-      <footer>
-        © <span>2025</span> Thesegen Marimuthu • <a href="mailto:vathesegen@gmail.com">vathesegen@gmail.com</a>
-      </footer>
     </div>
   </div>
 
   <script>
-    // Ripple effect
-    document.querySelectorAll('.links a').forEach(button => {
-      button.addEventListener('click', function (e) {
-        const ripple = document.createElement('span');
-        ripple.classList.add('ripple');
-        const rect = button.getBoundingClientRect();
-        ripple.style.width = ripple.style.height = Math.max(rect.width, rect.height) + 'px';
-        ripple.style.left = e.clientX - rect.left - (parseInt(ripple.style.width) / 2) + 'px';
-        ripple.style.top = e.clientY - rect.top - (parseInt(ripple.style.height) / 2) + 'px';
-        button.appendChild(ripple);
-        setTimeout(() => ripple.remove(), 600);
+    /* ========= utilities ========= */
+
+    // Fade-in on load/scroll
+    (function(){
+      const els = document.querySelectorAll('.fade-in');
+      const obs = new IntersectionObserver((entries, o)=>{
+        entries.forEach(en=>{
+          if(en.isIntersecting){
+            en.target.classList.add('visible');
+            o.unobserve(en.target);
+          }
+        });
+      }, {threshold: 0.2});
+      els.forEach(el=>obs.observe(el));
+    })();
+
+    // Smooth body fade-in on load
+    window.addEventListener('load', ()=> document.body.classList.add('loaded'));
+
+    /* ========= Ripple buttons ========= */
+    document.querySelectorAll('.links a').forEach(btn=>{
+      btn.addEventListener('click', function(e){
+        // create ripple element
+        const r = document.createElement('span');
+        r.className = 'ripple';
+        const rect = btn.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        r.style.width = r.style.height = size + 'px';
+        // position relative to button
+        const left = e.clientX - rect.left - size/2;
+        const top = e.clientY - rect.top - size/2;
+        r.style.left = left + 'px';
+        r.style.top = top + 'px';
+        btn.appendChild(r);
+        setTimeout(()=> r.remove(), 650);
       });
     });
 
-    // Cursor follow
-    const cursor = document.querySelector('.cursor');
-    document.addEventListener('mousemove', e => {
-      cursor.style.top = e.clientY + 'px';
-      cursor.style.left = e.clientX + 'px';
-    });
+    /* ========= cursor follow ========= */
+    (function(){
+      const c = document.getElementById('cursor');
+      // small optimization: use transform instead of top/left
+      let cx = 0, cy = 0, tx = 0, ty = 0, raf = null;
+      document.addEventListener('mousemove', e=>{
+        tx = e.clientX;
+        ty = e.clientY;
+        if(!raf) raf = requestAnimationFrame(function render(){
+          cx += (tx - cx) * 0.22;
+          cy += (ty - cy) * 0.22;
+          c.style.transform = `translate(${cx}px, ${cy}px) translate(-50%,-50%)`;
+          raf = requestAnimationFrame(render);
+        });
+      });
+    })();
 
-    // Fade-in on scroll
-    const faders = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+    /* ========= 3D tilt (smooth) =========
+       - Tilt is applied to .card-tilt (background + slight scale), while .card-inner content is left untransformed
+       - Uses requestAnimationFrame + lerp for buttery motion
+    */
+    (function(){
+      const card = document.getElementById('card');
+      const tilt = document.getElementById('cardTilt');
+      const bg = document.getElementById('cardBg');
+
+      if(!card || !tilt) return;
+
+      let mouseX = 0, mouseY = 0;
+      let rx = 0, ry = 0; // current animated values
+      let targetRx = 0, targetRy = 0;
+      let running = false;
+      const maxDeg = 10; // max tilt degrees
+
+      // on pointer move over card
+      card.addEventListener('pointermove', (e)=>{
+        const rect = card.getBoundingClientRect();
+        const px = (e.clientX - rect.left) / rect.width;  // 0..1
+        const py = (e.clientY - rect.top) / rect.height;  // 0..1
+        // center at 0
+        const cx = (px - 0.5) * 2; // -1 .. 1
+        const cy = (py - 0.5) * 2; // -1 .. 1
+
+        targetRy = cx * maxDeg;
+        targetRx = -cy * maxDeg;
+
+        if(!running){
+          running = true;
+          requestAnimationFrame(loop);
         }
       });
-    }, { threshold: 0.2 });
-    faders.forEach(el => observer.observe(el));
 
-    // 3D tilt effect (only on background layer, not text)
-    const card = document.querySelector('.card');
-    const cardBg = document.querySelector('.card-bg');
-    card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * 8;
-      const rotateY = ((x - centerX) / centerX) * 8;
-      cardBg.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-    });
-    card.addEventListener('mouseleave', () => {
-      cardBg.style.transform = "rotateX(0) rotateY(0) scale(1)";
-    });
+      card.addEventListener('pointerleave', ()=>{
+        targetRx = 0; targetRy = 0;
+        if(!running){
+          running = true;
+          requestAnimationFrame(loop);
+        }
+      });
+
+      function loop(){
+        // lerp towards target
+        rx += (targetRx - rx) * 0.14;
+        ry += (targetRy - ry) * 0.14;
+
+        // apply small scale for depth feel
+        tilt.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) scale(1.02)`;
+        // also tilt the background less aggressively for layered depth
+        bg.style.transform = `rotateX(${rx * 0.7}deg) rotateY(${ry * 0.7}deg) scale(1.03)`;
+
+        // if close to target, stop anim
+        if(Math.abs(rx - targetRx) < 0.01 && Math.abs(ry - targetRy) < 0.01){
+          running = false;
+          // snap to exact target to avoid tiny residuals
+          tilt.style.transform = `rotateX(${targetRx}deg) rotateY(${targetRy}deg) scale(1)`;
+          bg.style.transform = `rotateX(${targetRx * 0.7}deg) rotateY(${targetRy * 0.7}deg) scale(1)`;
+          return;
+        }
+        requestAnimationFrame(loop);
+      }
+
+      // optionally float the bg for subtle motion (keeps text crisp)
+      bg.classList.add('float');
+    })();
   </script>
 </body>
 </html>
