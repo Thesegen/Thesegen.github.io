@@ -57,11 +57,13 @@
     .card-inner {
       padding: 32px;
       border-radius: 18px;
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, 0.8); /* higher opacity for sharper text */
+      backdrop-filter: blur(10px);
       box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
       text-align: center;
-      transform: translateZ(60px); /* keeps text crisp */
+      transform: translateZ(60px);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
     @keyframes float {
