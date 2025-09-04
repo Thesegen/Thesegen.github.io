@@ -37,15 +37,23 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Card container (for perspective) */
+    /* Outer card container */
     .card {
       max-width: 760px;
       width: 100%;
-      margin: 0 auto;
       perspective: 1200px;
+      margin: 20px;
     }
 
-    /* Card inner (tilt + float + content) */
+    /* Tilt + float wrapper */
+    .card-tilt {
+      will-change: transform;
+      transform-style: preserve-3d;
+      animation: float 6s ease-in-out infinite;
+      transition: transform 0.25s ease;
+    }
+
+    /* Glass card inner */
     .card-inner {
       padding: 32px;
       border-radius: 18px;
@@ -53,25 +61,12 @@
       backdrop-filter: blur(14px);
       box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
       text-align: center;
-      will-change: transform;
-      animation: float 6s ease-in-out infinite;
-      transform: translateZ(0);
-      transition: transform 0.2s ease;
+      transform: translateZ(60px); /* keeps text crisp */
     }
+
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-12px); }
-    }
-
-    /* Fade-in on scroll */
-    .fade-slide {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .fade-slide.visible {
-      opacity: 1;
-      transform: translateY(0);
     }
 
     /* Typing effect for NAME */
@@ -190,7 +185,7 @@
       pointer-events: none;
       transform: translate(-50%, -50%);
       mix-blend-mode: screen;
-      z-index: 1;
+      z-index: 10;
       animation: breathe 2.5s ease-in-out infinite;
     }
     @keyframes breathe {
@@ -204,8 +199,19 @@
       }
     }
 
+    /* Fade-in scroll effect */
+    .fade-slide {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .fade-slide.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     @media (max-width: 600px) {
-      body { padding: 16px; }
+      .card { margin: 30px 20px; } /* breathing space */
       .card-inner { padding: 24px; }
       h1 { font-size: 26px; }
     }
@@ -215,27 +221,29 @@
   <div class="cursor"></div>
 
   <div class="card fade-slide">
-    <div class="card-inner">
-      <h1>Thesegen Marimuthu</h1>
-      <div class="tagline">Problem Solver • Builder • Innovator</div>
+    <div class="card-tilt">
+      <div class="card-inner">
+        <h1>Thesegen Marimuthu</h1>
+        <div class="tagline">Problem Solver • Builder • Innovator</div>
 
-      <p class="lead">RoboDK Robotics Certified • Junior Python Developer • Creative problem solver who builds systems that outlast problems.</p>
+        <p class="lead">RoboDK Robotics Certified • Junior Python Developer • Creative problem solver who builds systems that outlast problems.</p>
 
-      <div class="links">
-        <a href="https://www.linkedin.com/in/thesegen-marimuthu" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="https://github.com/thesegen" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-        <a href="links.html"><i class="fas fa-link"></i> Portfolio</a>
+        <div class="links">
+          <a href="https://www.linkedin.com/in/thesegen-marimuthu" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          <a href="https://github.com/thesegen" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+          <a href="links.html"><i class="fas fa-link"></i> Portfolio</a>
+        </div>
+
+        <hr/>
+        <p>
+          I design practical solutions that simplify complexity — from auto classroom management systems to robotics simulations and Python automation.  
+          Constantly learning and adapting, I aim to bring clarity, creativity, and problem-solving energy into every project I take on.
+        </p>
+
+        <footer>
+          © <span>2025</span> Thesegen Marimuthu • <a href="mailto:vathesegen@gmail.com">vathesegen@gmail.com</a>
+        </footer>
       </div>
-
-      <hr/>
-      <p>
-        I design practical solutions that simplify complexity — from auto classroom management systems to robotics simulations and Python automation.  
-        Constantly learning and adapting, I aim to bring clarity, creativity, and problem-solving energy into every project I take on.
-      </p>
-
-      <footer>
-        © <span>2025</span> Thesegen Marimuthu • <a href="mailto:vathesegen@gmail.com">vathesegen@gmail.com</a>
-      </footer>
     </div>
   </div>
 
@@ -261,33 +269,28 @@
       cursor.style.left = e.clientX + 'px';
     });
 
-    // 3D tilt effect
+    // Tilt effect
     const card = document.querySelector('.card');
-    const inner = document.querySelector('.card-inner');
-
+    const tilt = document.querySelector('.card-tilt');
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       const rotateX = ((y / rect.height) - 0.5) * 15;
       const rotateY = ((x / rect.width) - 0.5) * -15;
-      inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(0)`;
+      tilt.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     });
     card.addEventListener('mouseleave', () => {
-      inner.style.transform = 'rotateX(0) rotateY(0) translateZ(0)';
+      tilt.style.transform = 'rotateX(0) rotateY(0)';
     });
 
-    // Fade-in on scroll
-    const fadeEls = document.querySelectorAll('.fade-slide');
+    // Scroll fade-in
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.2 });
-    fadeEls.forEach(el => observer.observe(el));
+    document.querySelectorAll('.fade-slide').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
