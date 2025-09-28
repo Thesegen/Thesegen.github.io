@@ -12,6 +12,56 @@
   <meta name="description" content="Thesegen Marimuthu | RoboDK Robotics Certified • Junior Python Developer • Creative problem solver building systems that turn challenges into solutions." />
   <meta name="author" content="Thesegen Marimuthu" />
 
+  <!-- JSON-LD Schema: Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Thesegen Marimuthu",
+    "alternateName": "Thesegen M",
+    "url": "https://thesegen.github.io",
+    "image": "https://thesegen.github.io/images/thesegen.jpg",
+    "jobTitle": "Junior Python Developer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Independent / Personal Projects"
+    },
+    "email": "mailto:vathesegen@gmail.com",
+    "sameAs": [
+      "https://www.linkedin.com/in/thesegen-marimuthu",
+      "https://github.com/thesegen",
+      "https://dev.to/thesegen_marimuthu"
+    ],
+    "knowsAbout": [
+      "Python",
+      "Web Development",
+      "Robotics",
+      "Automation",
+      "Problem Solving"
+    ],
+    "description": "Thesegen Marimuthu is RoboDK Robotics Certified and a Junior Python Developer, passionate about solving problems and building creative systems."
+  }
+  </script>
+
+  <!-- JSON-LD Schema: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Thesegen Marimuthu",
+    "url": "https://thesegen.github.io",
+    "author": {
+      "@type": "Person",
+      "name": "Thesegen Marimuthu"
+    },
+    "description": "Personal website of Thesegen Marimuthu — RoboDK Robotics Certified • Junior Python Developer • Creative problem solver building systems that turn challenges into solutions.",
+    "publisher": {
+      "@type": "Person",
+      "name": "Thesegen Marimuthu"
+    }
+  }
+  </script>
+
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -37,7 +87,6 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* 3D tilt wrapper */
     .card {
       max-width: 760px;
       width: 100%;
@@ -45,7 +94,6 @@
       perspective: 1200px;
     }
 
-    /* Glass inner card with crisp centered content */
     .card-inner {
       position: relative;
       padding: 32px;
@@ -55,15 +103,12 @@
       text-align: center;
       transition: transform 0.25s ease;
       transform-style: preserve-3d;
-
-      /* Smooth HD text rendering */
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: geometricPrecision;
       backface-visibility: hidden;
     }
 
-    /* Blur background sits separately */
     .card-inner::before {
       content: "";
       position: absolute;
@@ -75,7 +120,6 @@
       border-radius: 18px;
     }
 
-    /* Typing effect for NAME */
     h1 {
       margin: 0 auto;
       font-size: 32px;
@@ -109,7 +153,6 @@
       font-size: 18px;
     }
 
-    /* Modern gradient buttons with ripple + icons */
     .links {
       display: flex;
       justify-content: center;
@@ -185,7 +228,6 @@
       text-decoration: underline;
     }
 
-    /* Glowing cursor trail with breathing effect */
     .cursor {
       position: fixed;
       top: 0;
@@ -205,7 +247,6 @@
       50% { transform: translate(-50%, -50%) scale(1.4); opacity: 1; }
     }
 
-    /* Scroll fade-in animation */
     .fade-in {
       opacity: 0;
       transform: translateY(30px);
@@ -252,7 +293,6 @@
   </div>
 
   <script>
-    // Ripple effect
     document.querySelectorAll('.links a').forEach(button => {
       button.addEventListener('click', function (e) {
         const ripple = document.createElement('span');
@@ -266,14 +306,12 @@
       });
     });
 
-    // Cursor follow
     const cursor = document.querySelector('.cursor');
     document.addEventListener('mousemove', e => {
       cursor.style.top = e.clientY + 'px';
       cursor.style.left = e.clientX + 'px';
     });
 
-    // Fade-in on scroll
     const faders = document.querySelectorAll('.fade-in');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -283,10 +321,8 @@
         }
       });
     }, { threshold: 0.2 });
-
     faders.forEach(el => observer.observe(el));
 
-    // 3D tilt effect (fixed version)
     const card = document.querySelector('.card');
     const cardInner = document.querySelector('.card-inner');
     card.addEventListener('mousemove', e => {
