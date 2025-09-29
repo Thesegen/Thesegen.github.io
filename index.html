@@ -5,14 +5,85 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Thesegen Marimuthu — Problem Solver & Tech Builder</title>
 
-  <!-- Font Awesome -->
+  <!-- Google site verification -->
+  <meta name="google-site-verification" content="7YflHmwVOmBsp4ATQMZUK7tA9q19CfMW6uwwVLa_EAc" />
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Thesegen Marimuthu | RoboDK Robotics Certified • Junior Python Developer • Creative problem solver building systems that turn challenges into solutions." />
+  <meta name="author" content="Thesegen Marimuthu" />
+
+  <!-- JSON-LD Schema: Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Thesegen Marimuthu",
+    "alternateName": "Thesegen M",
+    "url": "https://thesegen.github.io",
+    "image": "https://thesegen.github.io/images/thesegen.jpg",
+    "jobTitle": "Junior Python Developer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Independent / Personal Projects"
+    },
+    "email": "mailto:vathesegen@gmail.com",
+    "sameAs": [
+      "https://www.linkedin.com/in/thesegen-marimuthu",
+      "https://github.com/thesegen",
+      "https://dev.to/thesegen_marimuthu",
+      "https://linktr.ee/Thesegen_Marimuthu",
+      "https://t.me/YOUR_TELEGRAM_USERNAME",
+      "https://instagram.com/YOUR_INSTAGRAM_USERNAME"
+    ],
+    "knowsAbout": [
+      "Python",
+      "Web Development",
+      "Robotics",
+      "Automation",
+      "Problem Solving"
+    ],
+    "description": "Thesegen Marimuthu is RoboDK Robotics Certified and a Junior Python Developer, passionate about solving problems and building creative systems."
+  }
+  </script>
+
+  <!-- JSON-LD Schema: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Thesegen Marimuthu",
+    "url": "https://thesegen.github.io",
+    "author": {
+      "@type": "Person",
+      "name": "Thesegen Marimuthu"
+    },
+    "description": "Personal website of Thesegen Marimuthu — RoboDK Robotics Certified • Junior Python Developer • Creative problem solver building systems that turn challenges into solutions.",
+    "publisher": {
+      "@type": "Person",
+      "name": "Thesegen Marimuthu"
+    }
+  }
+  </script>
+
+  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    /* ---------- Background Animation ---------- */
+    :root {
+      --panel-width: 300px; /* default panel width */
+    }
+
+    /* widen panel on larger screens */
+    @media (min-width: 1000px) {
+      :root { --panel-width: 360px; }
+    }
+
+    /* ---------- Page / Background ---------- */
     body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
       margin: 0;
-      font-family: system-ui, sans-serif;
+      padding: 20px;
+      min-height: 100vh;
       background: linear-gradient(-45deg, #a18cd1, #fbc2eb, #f9f9f9, #d9a7c7);
       background-size: 400% 400%;
       animation: gradientShift 12s ease infinite;
@@ -25,223 +96,401 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* ---------- Card ---------- */
+    /* ---------- HERO (keeps Projects below the fold) ---------- */
+    .hero {
+      min-height: calc(100vh - 40px); /* visible first, projects below */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    /* ---------- Card (your original) ---------- */
     .card {
       max-width: 760px;
-      margin: 0 auto;
-      padding: 100px 20px 80px;
-      text-align: center;
+      width: 100%;
+      margin: auto;
+      perspective: 1200px;
+      z-index: 1000;
     }
+
     .card-inner {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(16px) saturate(180%);
+      position: relative;
       padding: 32px;
       border-radius: 18px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      transition: transform 0.25s ease;
+      transform-style: preserve-3d;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: geometricPrecision;
+      backface-visibility: hidden;
     }
-    .card h1 {
+
+    .card-inner::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: inherit;
+      backdrop-filter: blur(18px) saturate(180%);
+      z-index: -1;
+      border-radius: 18px;
+    }
+
+    h1 {
+      margin: 0 auto;
       font-size: 32px;
       font-weight: 700;
       color: #2d1b46;
-      margin: 0;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #6b2d84;
+      animation: typing 3s steps(25, end) forwards, blink 0.7s step-end infinite;
     }
-    .tagline { margin-top: 10px; font-size: 18px; color: #6b2d84; }
-    p.lead { margin: 12px 0 22px; font-size: 18px; color: #4b3f5c; }
-    .links {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-      margin-top: 20px;
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
     }
-    .links a {
-      padding: 10px 18px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, #8e2de2, #c471ed, #f64f59);
-      color: #fff;
-      font-weight: 500;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+    @keyframes blink {
+      from, to { border-color: transparent; }
+      50% { border-color: #6b2d84; }
     }
 
-    /* ---------- Hamburger ---------- */
+    .tagline { margin-top: 10px; font-size: 18px; color: #6b2d84; font-weight: 500; }
+    p.lead { margin: 12px 0 22px; color: #4b3f5c; font-size: 18px; }
+
+    .links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
+    .links a {
+      display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px;
+      background: linear-gradient(135deg, #8e2de2, #c471ed, #f64f59);
+      color: #fff; border-radius: 10px; font-size: 15px; text-decoration: none; font-weight: 500;
+      transition: all 0.35s ease; box-shadow: 0 4px 14px rgba(0,0,0,0.15); position: relative; overflow: hidden;
+    }
+    .links a i { font-size: 16px; transition: text-shadow 0.35s ease, transform 0.35s ease; }
+    .links a:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 8px 20px rgba(142,45,226,0.35); }
+    .links a:hover i { text-shadow: 0 0 8px #fff; transform: scale(1.2); }
+
+    hr { margin: 24px 0; border: 0; border-top: 1px solid rgba(0, 0, 0, 0.08); }
+    footer { margin-top: 20px; font-size: 14px; text-align: center; color: #4b3f5c; }
+    footer span { font-weight: 500; color: #2d1b46; }
+    footer a { color: #8e2de2; text-decoration: none; font-weight: 500; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ---------- Cursor ---------- */
+    .cursor {
+      position: fixed; top: 0; left: 0; width: 24px; height: 24px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,0,150,0.6), rgba(142,45,226,0.4));
+      pointer-events: none; transform: translate(-50%, -50%); mix-blend-mode: screen; z-index: 1200;
+      animation: breathe 2.5s ease-in-out infinite;
+    }
+    @keyframes breathe { 0%,100%{ transform: translate(-50%,-50%) scale(1); opacity:0.7 } 50%{ transform: translate(-50%,-50%) scale(1.4); opacity:1 } }
+
+    /* ---------- Fade-in utility ---------- */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 600px) {
+      body { padding: 16px; }
+      .card-inner { padding: 24px; }
+      h1 { font-size: 26px; }
+    }
+
+    /* ---------- HAMBURGER (top-right) - fixed & aligned ---------- */
     .hamburger {
       position: fixed;
       top: 20px;
       right: 20px;
-      width: 50px;
-      height: 50px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.3);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      z-index: 2000;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px) saturate(140%);
+      border: 1px solid rgba(255,255,255,0.18);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 2100; box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 3px;
-      background: white;
-      margin: 4px 0;
-      border-radius: 2px;
-      transition: all 0.3s ease;
-      transform-origin: center;
-    }
-    .hamburger.active span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-    .hamburger.active span:nth-child(2) {
-      opacity: 0;
-    }
-    .hamburger.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
-    }
+    .hamburger:hover { transform: scale(1.06); box-shadow: 0 10px 30px rgba(0,0,0,0.18); }
 
-    /* ---------- Side Panel ---------- */
+    /* Use inline stacked bars with consistent spacing. transform-origin center for correct X */
+    .hamburger .bar {
+      width: 22px;
+      height: 2.8px;
+      background: #fff;
+      display: block;
+      border-radius: 2px;
+      transition: transform 0.34s cubic-bezier(.2,.9,.3,1), opacity 0.2s ease;
+      transform-origin: center center;
+    }
+    .hamburger .bar + .bar { margin-top: 6px; }
+
+    /* When active - first & third rotate and move to center, second fades */
+    .hamburger.active .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.active .bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.active .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ---------- Panel backdrop ---------- */
+    .panel-backdrop {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.28); backdrop-filter: blur(6px);
+      opacity: 0; visibility: hidden; transition: opacity 220ms ease; z-index: 2040;
+    }
+    .panel-backdrop.active { opacity: 1; visibility: visible; }
+
+    /* ---------- SIDE PANEL (glossy frosted) using CSS var width ---------- */
     .side-panel {
       position: fixed;
       top: 0;
-      right: -320px; /* hidden */
-      width: 260px;
+      right: calc(-1 * var(--panel-width));
+      width: var(--panel-width);
       height: 100vh;
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(16px) saturate(180%);
-      background-image: linear-gradient(135deg, rgba(142,45,226,0.6), rgba(74,0,224,0.4));
-      box-shadow: -4px 0 20px rgba(0,0,0,0.2);
-      transition: right 0.4s ease;
-      z-index: 1500;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 20px;
+      background: linear-gradient(135deg, rgba(142,45,226,0.16), rgba(245,145,250,0.08));
+      backdrop-filter: blur(18px) saturate(160%);
+      box-shadow: -8px 0 40px rgba(29,0,60,0.25);
+      transition: right 420ms cubic-bezier(.22,.9,.17,1), opacity 280ms ease;
+      z-index: 2050;
+      display: flex; flex-direction: column; justify-content: space-between;
+      padding: 28px 20px;
+      opacity: 0; border-radius: 12px 0 0 12px;
     }
-    .side-panel.active { right: 0; }
+    .side-panel.active { right: 0; opacity: 1; }
 
-    @media (min-width: 768px) {
-      .side-panel { width: 320px; }
+    .side-panel::after {
+      content: ""; position: absolute; top:0; left:0; width:100%; height:36%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
+      pointer-events: none; border-radius: 12px 0 0 0;
     }
+
+    .panel-title { font-weight: 700; color: #fff; font-size: 18px; letter-spacing: 0.2px; }
 
     .projects-btn {
-      padding: 12px;
-      border-radius: 10px;
-      text-align: center;
+      margin-top: 24px;
+      padding: 12px 10px; border-radius: 12px;
       background: linear-gradient(135deg, #8e2de2, #f64f59);
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
+      color: white; font-weight: 600; text-align: center; cursor: pointer; border: none; width: 100%;
+      transition: transform 220ms ease, box-shadow 220ms ease; box-shadow: 0 6px 20px rgba(142,45,226,0.18);
     }
+    .projects-btn:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(142,45,226,0.22); }
 
-    .socials {
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      margin-bottom: 30px;
-    }
-    .socials a {
-      color: white;
-      font-size: 26px;
-      transition: transform 0.3s ease, color 0.3s ease;
-    }
-    .socials a:hover { transform: scale(1.2); color: #ffeb3b; }
+    .panel-bottom { display:flex; justify-content:center; align-items:center; gap:18px; padding-bottom:6px; }
+    .panel-bottom a { color:white; font-size:22px; text-decoration:none; transition: transform .22s ease, filter .22s ease; }
+    .panel-bottom a:hover { transform: scale(1.18); filter: drop-shadow(0 0 8px rgba(255,255,255,0.5)); }
 
-    /* ---------- Projects Section ---------- */
+    /* ---------- Projects placeholder section (kept below the fold) ---------- */
     #projects {
-      min-height: 100vh; /* makes sure it's below fold */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      background: #f5f5f5;
+      margin-top: 40px;
       padding: 60px 20px;
+      background: rgba(255,255,255,0.06);
+      width: min(920px, 96%);
       text-align: center;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 1s ease;
+      border-radius: 14px;
+      margin-left: auto; margin-right: auto;
+      box-shadow: 0 6px 26px rgba(0,0,0,0.08);
+      z-index: 900;
+      opacity: 0; transform: translateY(30px); transition: opacity 800ms ease, transform 800ms ease;
     }
-    #projects.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    #projects h2 { font-size: 28px; color: #2d1b46; margin: 0 0 10px; }
-    #projects p { font-size: 18px; color: #555; }
+    #projects.visible { opacity: 1; transform: translateY(0); }
+    #projects h2 { font-size: 26px; color: #2d1b46; margin: 0 0 10px; }
+    #projects p { color: #4b3f5c; font-size: 16px; margin: 0; }
+
   </style>
 </head>
 <body>
+  <!-- Cursor -->
+  <div class="cursor"></div>
 
-  <!-- Hamburger -->
-  <div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
+  <!-- Hamburger (fixed top-right) -->
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" title="Menu">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
 
-  <!-- Side panel -->
-  <div class="side-panel" id="sidePanel">
+  <!-- Backdrop -->
+  <div class="panel-backdrop" id="panelBackdrop" aria-hidden="true"></div>
+
+  <!-- Side panel (hidden by default) -->
+  <aside class="side-panel" id="sidePanel" aria-hidden="true">
     <div>
-      <div class="projects-btn" id="goProjects">My Projects</div>
-    </div>
-    <div class="socials">
-      <a href="https://instagram.com/YOUR_INSTAGRAM_USERNAME" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://t.me/YOUR_TELEGRAM_USERNAME" target="_blank"><i class="fab fa-telegram"></i></a>
-      <a href="https://github.com/thesegen" target="_blank"><i class="fab fa-github"></i></a>
-    </div>
-  </div>
+      <div class="panel-top">
+        <div class="panel-title">Quick Links</div>
+      </div>
 
-  <!-- Card -->
-  <div class="card">
-    <div class="card-inner">
-      <h1>Thesegen Marimuthu</h1>
-      <div class="tagline">Problem Solver • Builder • Innovator</div>
-      <p class="lead">RoboDK Robotics Certified • Junior Python Developer • Creative problem solver who builds systems that outlast problems.</p>
-      <div class="links">
-        <a href="https://www.linkedin.com/in/thesegen-marimuthu"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="https://github.com/thesegen"><i class="fab fa-github"></i> GitHub</a>
-        <a href="links.html"><i class="fas fa-link"></i> Portfolio</a>
+      <button class="projects-btn" id="goProjects">My Projects</button>
+
+      <!-- additional items can be added here later -->
+    </div>
+
+    <div class="panel-bottom">
+      <!-- replace placeholders with your usernames -->
+      <a href="https://instagram.com/Thesegen_Marimuthu" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://t.me/THESEGEN_MARIMUTHU" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+        <i class="fab fa-telegram"></i>
+      </a>
+    </div>
+  </aside>
+
+  <!-- HERO (ensures Projects is below the fold) -->
+  <main class="hero">
+    <!-- Main card (your original content) -->
+    <div class="card fade-in" id="mainCard">
+      <div class="card-inner">
+        <h1>Thesegen Marimuthu</h1>
+        <div class="tagline">Problem Solver • Builder • Innovator</div>
+
+        <p class="lead">RoboDK Robotics Certified • Junior Python Developer • Creative problem solver who builds systems that outlast problems.</p>
+
+        <div class="links">
+          <a href="https://www.linkedin.com/in/thesegen-marimuthu" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          <a href="https://github.com/thesegen" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+          <a href="links.html"><i class="fas fa-link"></i> Portfolio</a>
+        </div>
+
+        <hr/>
+        <p>
+          I design practical solutions that simplify complexity — from auto classroom management systems to robotics simulations and Python automation.  
+          Constantly learning and adapting, I aim to bring clarity, creativity, and problem-solving energy into every project I take on.
+        </p>
+
+        <footer>
+          © <span>2025</span> Thesegen Marimuthu • <a href="mailto:vathesegen@gmail.com">vathesegen@gmail.com</a>
+        </footer>
       </div>
     </div>
-  </div>
+  </main>
 
-  <!-- Projects Section -->
-  <section id="projects">
+  <!-- Projects placeholder (so 'My Projects' can scroll to it) -->
+  <section id="projects" aria-label="Projects">
     <h2>Projects</h2>
-    <p>🚧 Coming soon... Stay tuned for my work!</p>
+    <p>🚧 Coming soon — this section is ready for the project content you plan to add.</p>
   </section>
 
+  <!-- Scripts (original interactivity + menu behaviour) -->
   <script>
+    // Ripple effect for your links (keeps original behavior)
+    document.querySelectorAll('.links a').forEach(button => {
+      button.addEventListener('click', function (e) {
+        const ripple = document.createElement('span');
+        ripple.style.position = 'absolute';
+        ripple.style.borderRadius = '50%';
+        ripple.style.transform = 'scale(0)';
+        ripple.style.background = 'rgba(255,255,255,0.6)';
+        ripple.style.pointerEvents = 'none';
+        const size = Math.max(this.offsetWidth, this.offsetHeight);
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = (e.clientX - this.getBoundingClientRect().left - (size/2)) + 'px';
+        ripple.style.top = (e.clientY - this.getBoundingClientRect().top - (size/2)) + 'px';
+        ripple.style.transition = 'transform 0.6s linear, opacity 0.6s linear';
+        this.style.position = 'relative';
+        this.appendChild(ripple);
+        requestAnimationFrame(()=> ripple.style.transform = 'scale(4)');
+        setTimeout(() => { ripple.style.opacity = '0'; setTimeout(()=>ripple.remove(),300); }, 600);
+      });
+    });
+
+    // Cursor follow
+    const cursor = document.querySelector('.cursor');
+    document.addEventListener('mousemove', e => {
+      cursor.style.top = e.clientY + 'px';
+      cursor.style.left = e.clientX + 'px';
+    });
+
+    // Fade-in on scroll (original)
+    const faders = document.querySelectorAll('.fade-in');
+    const observerF = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observerF.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    faders.forEach(el => observerF.observe(el));
+
+    // 3D tilt effect for the card (original)
+    const card = document.querySelector('.card');
+    const cardInner = document.querySelector('.card-inner');
+    if (card && cardInner) {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * 10;
+        const rotateY = ((x - centerX) / centerX) * 10;
+        cardInner.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        cardInner.style.transform = "rotateX(0) rotateY(0)";
+      });
+    }
+
+    // ---------- MENU toggle ----------
     const hamburger = document.getElementById('hamburger');
     const sidePanel = document.getElementById('sidePanel');
+    const panelBackdrop = document.getElementById('panelBackdrop');
     const goProjects = document.getElementById('goProjects');
     const projects = document.getElementById('projects');
 
-    // Toggle panel
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      sidePanel.classList.toggle('active');
-    });
-
-    // Scroll to projects
-    goProjects.addEventListener('click', () => {
-      projects.scrollIntoView({ behavior: 'smooth' });
+    function openPanel() {
+      hamburger.classList.add('active');
+      hamburger.setAttribute('aria-expanded', 'true');
+      sidePanel.classList.add('active');
+      sidePanel.setAttribute('aria-hidden', 'false');
+      panelBackdrop.classList.add('active');
+      panelBackdrop.setAttribute('aria-hidden', 'false');
+    }
+    function closePanel() {
       hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
       sidePanel.classList.remove('active');
+      sidePanel.setAttribute('aria-hidden', 'true');
+      panelBackdrop.classList.remove('active');
+      panelBackdrop.setAttribute('aria-hidden', 'true');
+    }
+
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (sidePanel.classList.contains('active')) closePanel(); else openPanel();
     });
 
-    // Fade-in animation when projects is visible
-    const observer = new IntersectionObserver(entries => {
+    panelBackdrop.addEventListener('click', () => closePanel());
+
+    // scroll to projects button
+    goProjects.addEventListener('click', () => {
+      projects.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      closePanel();
+    });
+
+    // close panel if user clicks outside of it (safety)
+    document.addEventListener('click', (evt) => {
+      const target = evt.target;
+      if (!sidePanel.contains(target) && !hamburger.contains(target) && sidePanel.classList.contains('active')) {
+        closePanel();
+      }
+    });
+
+    // close on ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && sidePanel.classList.contains('active')) closePanel();
+    });
+
+    // Fade-in projects when scrolled into view
+    const projObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           projects.classList.add('visible');
+          projObserver.unobserve(projects);
         }
       });
-    }, { threshold: 0.3 });
-
-    observer.observe(projects);
+    }, { threshold: 0.25 });
+    projObserver.observe(projects);
   </script>
 </body>
 </html>
