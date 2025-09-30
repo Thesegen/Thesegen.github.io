@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    /* Background */
     body {
       font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       margin: 0;
@@ -52,7 +51,6 @@
       border-radius: 18px;
       z-index: -1;
     }
-
     h1 {
       font-size: 32px;
       font-weight: 700;
@@ -65,12 +63,7 @@
     @keyframes typing { from { width: 0; } to { width: 100%; } }
     @keyframes blink { 50% { border-color: transparent; } }
 
-    .tagline {
-      margin-top: 10px;
-      font-size: 18px;
-      color: #6b2d84;
-      font-weight: 500;
-    }
+    .tagline { margin-top: 10px; font-size: 18px; color: #6b2d84; font-weight: 500; }
     p.lead { margin: 12px 0 22px; color: #4b3f5c; font-size: 18px; }
     .links {
       display: flex;
@@ -95,7 +88,7 @@
     hr { margin: 24px 0; border: 0; border-top: 1px solid rgba(0,0,0,0.08); }
     footer { margin-top: 20px; font-size: 14px; color: #4b3f5c; }
 
-    /* Projects Section */
+    /* Projects */
     #projects {
       height: 100vh;
       display: flex;
@@ -107,10 +100,7 @@
       transform: translateY(40px);
       transition: opacity 1s ease, transform 1s ease;
     }
-    #projects.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    #projects.visible { opacity: 1; transform: translateY(0); }
     #projects .inner {
       max-width: 760px;
       border-radius: 18px;
@@ -119,7 +109,7 @@
       padding: 40px;
     }
 
-    /* Floating Hamburger Button */
+    /* Floating Hamburger */
     .menu-btn {
       position: fixed;
       top: 20px;
@@ -138,7 +128,6 @@
       transition: transform 0.3s ease;
     }
     .menu-btn:hover { transform: scale(1.05); }
-
     .menu-btn span {
       position: absolute;
       width: 24px;
@@ -150,16 +139,9 @@
     .menu-btn span:nth-child(1) { top: 18px; }
     .menu-btn span:nth-child(2) { top: 26px; }
     .menu-btn span:nth-child(3) { top: 34px; }
-
-    .menu-btn.active span:nth-child(1) {
-      transform: rotate(45deg);
-      top: 26px;
-    }
+    .menu-btn.active span:nth-child(1) { transform: rotate(45deg); top: 26px; }
     .menu-btn.active span:nth-child(2) { opacity: 0; }
-    .menu-btn.active span:nth-child(3) {
-      transform: rotate(-45deg);
-      top: 26px;
-    }
+    .menu-btn.active span:nth-child(3) { transform: rotate(-45deg); top: 26px; }
 
     /* Side Menu */
     .side-menu {
@@ -168,40 +150,41 @@
       right: -300px;
       width: 280px;
       height: 100vh;
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.95);
       backdrop-filter: blur(12px);
       box-shadow: -4px 0 20px rgba(0,0,0,0.15);
-      transition: right 0.5s ease;
+      transition: right 0.5s ease, opacity 0.3s ease;
       padding: 60px 20px;
       z-index: 1000;
       opacity: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
-    .side-menu.active {
-      right: 0;
-      opacity: 1;
-    }
-    .side-menu ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .side-menu ul li {
-      margin: 20px 0;
-      text-align: center;
-    }
+    .side-menu.active { right: 0; opacity: 1; }
+    .side-menu ul { list-style: none; padding: 0; margin: 0; text-align: center; }
+    .side-menu ul li { margin: 20px 0; }
     .side-menu ul li a {
       text-decoration: none;
       font-size: 18px;
       color: #2d1b46;
       font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       transition: color 0.3s ease;
     }
     .side-menu ul li a:hover { color: #8e2de2; }
+
+    /* Contact submenu */
+    .contact-submenu { display: none; margin-top: 10px; }
+    .contact-submenu a { font-size: 16px; }
+    .contact-submenu.active { display: flex; flex-direction: column; gap: 10px; }
   </style>
 </head>
 <body>
 
-  <!-- Menu Button -->
+  <!-- Hamburger -->
   <div class="menu-btn" id="menu-btn">
     <span></span>
     <span></span>
@@ -211,11 +194,17 @@
   <!-- Side Menu -->
   <div class="side-menu" id="side-menu">
     <ul>
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="https://www.linkedin.com/in/thesegen-marimuthu" target="_blank">LinkedIn</a></li>
-      <li><a href="https://github.com/thesegen" target="_blank">GitHub</a></li>
-      <li><a href="mailto:vathesegen@gmail.com">Contact</a></li>
+      <li><a href="#hero"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="#projects"><i class="fas fa-folder-open"></i> Projects</a></li>
+      <li><a href="https://www.linkedin.com/in/thesegen-marimuthu" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+      <li><a href="https://github.com/thesegen" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+      <li>
+        <a href="#" id="contact-toggle"><i class="fas fa-address-book"></i> Contact</a>
+        <div class="contact-submenu" id="contact-submenu">
+          <a href="https://instagram.com/thesegen_marimuthu" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="https://t.me/Thesegen_Marimuthu" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
+        </div>
+      </li>
     </ul>
   </div>
 
@@ -235,7 +224,7 @@
       <hr/>
       <p>
         I design practical solutions that simplify complexity — from auto classroom management systems to robotics simulations and Python automation.
-        Constantly learning and adapting, I aim to bring clarity, creativity, and problem-solving energy into every project I take on.
+        Constantly learning and adapting, I strive to bring clarity, creativity, and problem-solving energy to every project I undertake.
       </p>
 
       <footer>
@@ -253,10 +242,9 @@
   </section>
 
   <script>
-    // Hero shrink + fade projects
+    // Observer for fade
     const projects = document.getElementById("projects");
     const hero = document.getElementById("hero");
-
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.target.id === "projects") {
@@ -275,10 +263,17 @@
     // Menu toggle
     const menuBtn = document.getElementById("menu-btn");
     const sideMenu = document.getElementById("side-menu");
-
     menuBtn.addEventListener("click", () => {
       menuBtn.classList.toggle("active");
       sideMenu.classList.toggle("active");
+    });
+
+    // Contact submenu toggle
+    const contactToggle = document.getElementById("contact-toggle");
+    const contactSubmenu = document.getElementById("contact-submenu");
+    contactToggle.addEventListener("click", e => {
+      e.preventDefault();
+      contactSubmenu.classList.toggle("active");
     });
   </script>
 </body>
