@@ -15,9 +15,9 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Projects Section (same page but anchor link) -->
+  <!-- Projects (still part of homepage, so don't use #projects) -->
   <url>
-    <loc>https://thesegen.github.io/#projects</loc>
+    <loc>https://thesegen.github.io/</loc>
     <lastmod>2025-10-01</lastmod>
     <priority>0.7</priority>
   </url>
