@@ -5,64 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Thesegen Marimuthu — Problem Solver & Tech Builder</title>
 
-  <!-- Google site verification -->
-  <meta name="google-site-verification" content="7YflHmwVOmBsp4ATQMZUK7tA9q19CfMW6uwwVLa_EAc" />
-
-  <!-- SEO Meta -->
-  <meta name="description" content="Thesegen Marimuthu | RoboDK Robotics Certified • Junior Python Developer • Creative problem solver building systems that turn challenges into solutions." />
-  <meta name="author" content="Thesegen Marimuthu" />
-
-  <!-- JSON-LD Schema: Person -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Thesegen Marimuthu",
-    "alternateName": "Thesegen M",
-    "url": "https://thesegen.github.io",
-    "image": "https://thesegen.github.io/images/thesegen.jpg",
-    "jobTitle": "Junior Python Developer",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Independent / Personal Projects"
-    },
-    "email": "mailto:vathesegen@gmail.com",
-    "sameAs": [
-      "https://www.linkedin.com/in/thesegen-marimuthu",
-      "https://github.com/thesegen",
-      "https://dev.to/thesegen_marimuthu",
-      "https://linktr.ee/Thesegen_Marimuthu"
-    ],
-    "knowsAbout": [
-      "Python",
-      "Web Development",
-      "Robotics",
-      "Automation",
-      "Problem Solving"
-    ],
-    "description": "Thesegen Marimuthu is RoboDK Robotics Certified and a Junior Python Developer, passionate about solving problems and building creative systems."
-  }
-  </script>
-
-  <!-- JSON-LD Schema: WebSite -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Thesegen Marimuthu",
-    "url": "https://thesegen.github.io",
-    "author": {
-      "@type": "Person",
-      "name": "Thesegen Marimuthu"
-    },
-    "description": "Personal website of Thesegen Marimuthu — RoboDK Robotics Certified • Junior Python Developer • Creative problem solver building systems that turn challenges into solutions.",
-    "publisher": {
-      "@type": "Person",
-      "name": "Thesegen Marimuthu"
-    }
-  }
-  </script>
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -71,7 +13,6 @@
     body {
       font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       margin: 0;
-      padding: 0;
       background: linear-gradient(-45deg, #a18cd1, #fbc2eb, #f9f9f9, #d9a7c7);
       background-size: 400% 400%;
       animation: gradientShift 12s ease infinite;
@@ -93,16 +34,14 @@
       text-align: center;
       transition: transform 0.6s ease;
     }
-    .hero.shrink {
-      transform: scale(0.9);
-    }
+    .hero.shrink { transform: scale(0.9); }
     .card-inner {
       padding: 32px;
       border-radius: 18px;
       background: rgba(255, 255, 255, 0.15);
       box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
-      position: relative;
       max-width: 760px;
+      position: relative;
     }
     .card-inner::before {
       content: "";
@@ -123,13 +62,8 @@
       border-right: 3px solid #6b2d84;
       animation: typing 3s steps(25, end) forwards, blink 0.7s step-end infinite;
     }
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-    @keyframes blink {
-      50% { border-color: transparent; }
-    }
+    @keyframes typing { from { width: 0; } to { width: 100%; } }
+    @keyframes blink { 50% { border-color: transparent; } }
 
     .tagline {
       margin-top: 10px;
@@ -137,11 +71,7 @@
       color: #6b2d84;
       font-weight: 500;
     }
-    p.lead {
-      margin: 12px 0 22px;
-      color: #4b3f5c;
-      font-size: 18px;
-    }
+    p.lead { margin: 12px 0 22px; color: #4b3f5c; font-size: 18px; }
     .links {
       display: flex;
       justify-content: center;
@@ -162,21 +92,12 @@
       transform: translateY(-4px) scale(1.05);
       box-shadow: 0 8px 20px rgba(142,45,226,0.35);
     }
-
-    hr {
-      margin: 24px 0;
-      border: 0;
-      border-top: 1px solid rgba(0, 0, 0, 0.08);
-    }
-    footer {
-      margin-top: 20px;
-      font-size: 14px;
-      color: #4b3f5c;
-    }
+    hr { margin: 24px 0; border: 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    footer { margin-top: 20px; font-size: 14px; color: #4b3f5c; }
 
     /* Projects Section */
     #projects {
-      height: 100vh; /* full viewport height */
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -197,18 +118,106 @@
       box-shadow: 0 6px 24px rgba(0,0,0,0.1);
       padding: 40px;
     }
-    #projects h2 {
-      font-size: 26px;
-      color: #2d1b46;
-      margin-bottom: 12px;
+
+    /* Floating Hamburger Button */
+    .menu-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #ffffffaa, #d1c4e9aa);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      z-index: 1001;
+      transition: transform 0.3s ease;
     }
-    #projects p {
+    .menu-btn:hover { transform: scale(1.05); }
+
+    .menu-btn span {
+      position: absolute;
+      width: 24px;
+      height: 3px;
+      background: #2d1b46;
+      border-radius: 2px;
+      transition: all 0.4s ease;
+    }
+    .menu-btn span:nth-child(1) { top: 18px; }
+    .menu-btn span:nth-child(2) { top: 26px; }
+    .menu-btn span:nth-child(3) { top: 34px; }
+
+    .menu-btn.active span:nth-child(1) {
+      transform: rotate(45deg);
+      top: 26px;
+    }
+    .menu-btn.active span:nth-child(2) { opacity: 0; }
+    .menu-btn.active span:nth-child(3) {
+      transform: rotate(-45deg);
+      top: 26px;
+    }
+
+    /* Side Menu */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 280px;
+      height: 100vh;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(12px);
+      box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+      transition: right 0.5s ease;
+      padding: 60px 20px;
+      z-index: 1000;
+      opacity: 0;
+    }
+    .side-menu.active {
+      right: 0;
+      opacity: 1;
+    }
+    .side-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .side-menu ul li {
+      margin: 20px 0;
+      text-align: center;
+    }
+    .side-menu ul li a {
+      text-decoration: none;
       font-size: 18px;
-      color: #333;
+      color: #2d1b46;
+      font-weight: 600;
+      transition: color 0.3s ease;
     }
+    .side-menu ul li a:hover { color: #8e2de2; }
   </style>
 </head>
 <body>
+
+  <!-- Menu Button -->
+  <div class="menu-btn" id="menu-btn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Side Menu -->
+  <div class="side-menu" id="side-menu">
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="https://www.linkedin.com/in/thesegen-marimuthu" target="_blank">LinkedIn</a></li>
+      <li><a href="https://github.com/thesegen" target="_blank">GitHub</a></li>
+      <li><a href="mailto:vathesegen@gmail.com">Contact</a></li>
+    </ul>
+  </div>
 
   <!-- Hero -->
   <section class="hero" id="hero">
@@ -235,7 +244,7 @@
     </div>
   </section>
 
-  <!-- Projects Section -->
+  <!-- Projects -->
   <section id="projects">
     <div class="inner">
       <h2>🚀 Projects Coming Soon</h2>
@@ -244,6 +253,7 @@
   </section>
 
   <script>
+    // Hero shrink + fade projects
     const projects = document.getElementById("projects");
     const hero = document.getElementById("hero");
 
@@ -260,8 +270,16 @@
         }
       });
     }, { threshold: 0.4 });
-
     observer.observe(projects);
+
+    // Menu toggle
+    const menuBtn = document.getElementById("menu-btn");
+    const sideMenu = document.getElementById("side-menu");
+
+    menuBtn.addEventListener("click", () => {
+      menuBtn.classList.toggle("active");
+      sideMenu.classList.toggle("active");
+    });
   </script>
 </body>
 </html>
