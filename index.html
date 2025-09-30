@@ -31,9 +31,7 @@
       "https://www.linkedin.com/in/thesegen-marimuthu",
       "https://github.com/thesegen",
       "https://dev.to/thesegen_marimuthu",
-      "https://linktr.ee/Thesegen_Marimuthu",
-      "https://t.me/THESEGEN_MARIMUTHU",
-      "https://instagram.com/Thesegen_Marimuthu"
+      "https://linktr.ee/Thesegen_Marimuthu"
     ],
     "knowsAbout": [
       "Python",
@@ -69,272 +67,184 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    :root { --panel-width: 300px; }
-    @media (min-width: 1000px) { :root { --panel-width: 360px; } }
-
-    /* Page background */
+    /* Gradient background */
     body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      margin: 0; padding: 20px; min-height: 100vh;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
       background: linear-gradient(-45deg, #a18cd1, #fbc2eb, #f9f9f9, #d9a7c7);
-      background-size: 400% 400%; animation: gradientShift 12s ease infinite;
-      color: #111; overflow-x: hidden;
+      background-size: 400% 400%;
+      animation: gradientShift 12s ease infinite;
+      color: #111;
+      overflow-x: hidden;
     }
     @keyframes gradientShift {
-      0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; }
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
-    /* HERO (keeps Projects below the fold) */
-    .hero { min-height: calc(100vh - 40px); display:flex; align-items:center; justify-content:center; width:100%; }
-
-    /* Card */
-    .card { max-width:760px; width:100%; margin:auto; perspective:1200px; z-index:1000; }
+    .card {
+      max-width: 760px;
+      margin: auto;
+      perspective: 1200px;
+    }
     .card-inner {
-      position:relative; padding:32px; border-radius:18px;
-      background: rgba(255,255,255,0.15);
-      box-shadow: 0 8px 40px rgba(0,0,0,0.15);
-      text-align:center; transition: transform .25s ease; transform-style:preserve-3d;
-      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; text-rendering:geometricPrecision;
+      padding: 32px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      transition: transform 0.25s ease;
+      position: relative;
     }
     .card-inner::before {
-      content:""; position:absolute; top:0; left:0; width:100%; height:100%;
-      background: inherit; backdrop-filter: blur(18px) saturate(180%); z-index:-1; border-radius:18px;
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: inherit;
+      backdrop-filter: blur(18px) saturate(180%);
+      border-radius: 18px;
+      z-index: -1;
     }
 
-    h1 { margin:0 auto; font-size:32px; font-weight:700; color:#2d1b46;
-         display:inline-block; white-space:nowrap; overflow:hidden;
-         border-right:3px solid #6b2d84; animation: typing 3s steps(25,end) forwards, blink .7s step-end infinite; }
-    @keyframes typing { from { width: 0 } to { width: 100% } }
-    @keyframes blink { from,to { border-color:transparent } 50% { border-color:#6b2d84 } }
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #2d1b46;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #6b2d84;
+      animation: typing 3s steps(25, end) forwards, blink 0.7s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
 
-    .tagline { margin-top:10px; font-size:18px; color:#6b2d84; font-weight:500; }
-    p.lead { margin:12px 0 22px; color:#4b3f5c; font-size:18px; }
+    .tagline {
+      margin-top: 10px;
+      font-size: 18px;
+      color: #6b2d84;
+      font-weight: 500;
+    }
 
-    .links { display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-top:20px; }
+    p.lead {
+      margin: 12px 0 22px;
+      color: #4b3f5c;
+      font-size: 18px;
+    }
+
+    .links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
     .links a {
-      display:inline-flex; align-items:center; gap:8px; padding:10px 18px;
-      background:linear-gradient(135deg,#8e2de2,#c471ed,#f64f59); color:#fff; border-radius:10px;
-      font-size:15px; text-decoration:none; font-weight:500; transition: all .35s ease;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.15); position:relative; overflow:hidden;
+      padding: 10px 18px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #8e2de2, #c471ed, #f64f59);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.35s ease;
     }
-    .links a:hover { transform: translateY(-4px) scale(1.05); }
-
-    hr { margin:24px 0; border:0; border-top:1px solid rgba(0,0,0,0.08); }
-    footer { margin-top:20px; font-size:14px; text-align:center; color:#4b3f5c; }
-    footer a { color:#8e2de2; text-decoration:none; font-weight:500; }
-
-    /* Cursor */
-    .cursor {
-      position:fixed; top:0; left:0; width:24px; height:24px; border-radius:50%;
-      background: radial-gradient(circle, rgba(255,0,150,0.6), rgba(142,45,226,0.4));
-      pointer-events:none; transform: translate(-50%,-50%); mix-blend-mode:screen; z-index:1200;
-      animation: breathe 2.5s ease-in-out infinite;
+    .links a:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(142,45,226,0.35);
     }
-    @keyframes breathe { 0%,100%{ transform: translate(-50%,-50%) scale(1); opacity:.7 } 50%{ transform: translate(-50%,-50%) scale(1.4); opacity:1 } }
 
-    /* Hamburger (three bars) */
-    .hamburger {
-      position:fixed; top:20px; right:20px; width:52px; height:52px; border-radius:50%;
-      background: rgba(255,255,255,0.12); backdrop-filter: blur(10px) saturate(140%);
-      border:1px solid rgba(255,255,255,0.18); display:flex; align-items:center; justify-content:center;
-      cursor:pointer; z-index:2100; box-shadow:0 6px 18px rgba(0,0,0,0.12);
+    hr {
+      margin: 24px 0;
+      border: 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
     }
-    .hamburger .bar { width:24px; height:3px; background:#fff; border-radius:3px; transition: all .32s ease; transform-origin:center; display:block; }
-    .hamburger .bar + .bar { margin-top:6px; }
-    .hamburger.active .bar1 { transform: translateY(7px) rotate(45deg); }
-    .hamburger.active .bar2 { opacity:0; transform: scaleX(0); }
-    .hamburger.active .bar3 { transform: translateY(-7px) rotate(-45deg); }
 
-    /* Backdrop for panel */
-    .panel-backdrop {
-      position:fixed; inset:0; background: rgba(0,0,0,0.28); backdrop-filter: blur(6px);
-      opacity:0; visibility:hidden; transition: opacity .22s ease; z-index:2040;
+    footer {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #4b3f5c;
     }
-    .panel-backdrop.active { opacity:1; visibility:visible; }
 
-    /* Side panel */
-    .side-panel {
-      position:fixed; top:0; right: calc(-1 * var(--panel-width));
-      width: var(--panel-width); height:100vh;
-      background: linear-gradient(135deg, rgba(142,45,226,0.16), rgba(245,145,250,0.08));
-      backdrop-filter: blur(18px) saturate(160%); box-shadow:-8px 0 40px rgba(29,0,60,0.25);
-      transition: right .42s cubic-bezier(.22,.9,.17,1), opacity .28s ease; z-index:2050;
-      display:flex; flex-direction:column; justify-content:space-between; padding:28px 20px; opacity:0; border-radius:12px 0 0 12px;
-    }
-    .side-panel.active { right:0; opacity:1; }
-    .side-panel::after { content:""; position:absolute; top:0; left:0; width:100%; height:36%; background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0)); pointer-events:none; border-radius:12px 0 0 0; }
-
-    .panel-title { font-weight:700; color:#fff; font-size:18px; }
-    .projects-btn { margin-top:24px; padding:12px 10px; border-radius:12px; background:linear-gradient(135deg,#8e2de2,#f64f59); color:#fff; font-weight:600; border:none; width:100%; cursor:pointer; }
-
-    .panel-bottom { display:flex; justify-content:center; align-items:center; gap:22px; margin-top:auto; padding:20px 0; }
-    .panel-bottom a { color:white; font-size:26px; display:flex; align-items:center; justify-content:center; transition: transform .25s ease, filter .25s ease; }
-    .panel-bottom a:hover { transform:scale(1.18); filter: drop-shadow(0 0 8px rgba(255,255,255,0.6)); }
-
-    /* Projects */
+    /* 🔹 Projects Section */
     #projects {
-      margin-top:40px; padding:60px 20px; background: rgba(255,255,255,0.06);
-      width:min(920px,96%); text-align:center; border-radius:14px; margin-left:auto; margin-right:auto;
-      box-shadow:0 6px 26px rgba(0,0,0,0.08); z-index:900; opacity:0; transform: translateY(40px);
-      transition: opacity .8s ease, transform .8s ease;
+      margin: 100px auto;
+      max-width: 760px;
+      padding: 40px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.12);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s ease, transform 1s ease;
     }
-    #projects.visible { opacity:1; transform: translateY(0); }
-
-    @media (max-width:600px){ body{padding:16px} .card-inner{padding:24px} h1{font-size:26px} }
+    #projects.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    #projects h2 {
+      font-size: 26px;
+      color: #2d1b46;
+      margin-bottom: 12px;
+    }
+    #projects p {
+      font-size: 18px;
+      color: #333;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Cursor -->
-  <div class="cursor"></div>
+  <!-- Intro Card -->
+  <div class="card">
+    <div class="card-inner">
+      <h1>Thesegen Marimuthu</h1>
+      <div class="tagline">Problem Solver • Builder • Innovator</div>
+      <p class="lead">RoboDK Robotics Certified • Junior Python Developer • Creative problem solver who builds systems that outlast problems.</p>
 
-  <!-- Hamburger -->
-  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-    <span class="bar bar1"></span>
-    <span class="bar bar2"></span>
-    <span class="bar bar3"></span>
-  </button>
-
-  <!-- Backdrop -->
-  <div class="panel-backdrop" id="panelBackdrop" aria-hidden="true"></div>
-
-  <!-- Side panel -->
-  <aside class="side-panel" id="sidePanel" aria-hidden="true">
-    <div>
-      <div class="panel-title">Quick Links</div>
-      <button class="projects-btn" id="goProjects">My Projects</button>
-    </div>
-
-    <div class="panel-bottom">
-      <a href="https://instagram.com/Thesegen_Marimuthu" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://t.me/THESEGEN_MARIMUTHU" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
-    </div>
-  </aside>
-
-  <!-- Hero -->
-  <main class="hero">
-    <div class="card fade-in" id="mainCard">
-      <div class="card-inner">
-        <h1>Thesegen Marimuthu</h1>
-        <div class="tagline">Problem Solver • Builder • Innovator</div>
-        <p class="lead">RoboDK Robotics Certified • Junior Python Developer • Creative problem solver who builds systems that outlast problems.</p>
-
-        <div class="links">
-          <a href="https://www.linkedin.com/in/thesegen-marimuthu" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-          <a href="https://github.com/thesegen" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-          <a href="links.html"><i class="fas fa-link"></i> Portfolio</a>
-        </div>
-
-        <hr/>
-        <p>I design practical solutions that simplify complexity — from auto classroom management systems to robotics simulations and Python automation.</p>
-
-        <footer>© <span>2025</span> Thesegen Marimuthu • <a href="mailto:vathesegen@gmail.com">vathesegen@gmail.com</a></footer>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/thesegen-marimuthu" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/thesegen" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="links.html"><i class="fas fa-link"></i> Portfolio</a>
       </div>
-    </div>
-  </main>
 
-  <!-- Projects -->
-  <section id="projects" aria-label="Projects">
-    <h2>Projects</h2>
-    <p>🚧 Coming soon — this section is ready for the project content you plan to add.</p>
+      <hr/>
+      <p>
+        I design practical solutions that simplify complexity — from auto classroom management systems to robotics simulations and Python automation.
+        Constantly learning and adapting, I aim to bring clarity, creativity, and problem-solving energy into every project I take on.
+      </p>
+
+      <footer>
+        © <span>2025</span> Thesegen Marimuthu • <a href="mailto:vathesegen@gmail.com">vathesegen@gmail.com</a>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>🚀 Projects Coming Soon</h2>
+    <p>Stay tuned! I’m working on exciting things.</p>
   </section>
 
   <script>
-    // ripple for links (keeps original behavior)
-    document.querySelectorAll('.links a').forEach(button => {
-      button.addEventListener('click', function (e) {
-        const ripple = document.createElement('span');
-        ripple.style.position = 'absolute';
-        ripple.style.borderRadius = '50%';
-        ripple.style.transform = 'scale(0)';
-        ripple.style.background = 'rgba(255,255,255,0.6)';
-        ripple.style.pointerEvents = 'none';
-        const size = Math.max(this.offsetWidth, this.offsetHeight);
-        ripple.style.width = ripple.style.height = size + 'px';
-        ripple.style.left = (e.clientX - this.getBoundingClientRect().left - (size/2)) + 'px';
-        ripple.style.top = (e.clientY - this.getBoundingClientRect().top - (size/2)) + 'px';
-        ripple.style.transition = 'transform 0.6s linear, opacity 0.6s linear';
-        this.style.position = 'relative';
-        this.appendChild(ripple);
-        requestAnimationFrame(()=> ripple.style.transform = 'scale(4)');
-        setTimeout(() => { ripple.style.opacity = '0'; setTimeout(()=>ripple.remove(),300); }, 600);
-      });
-    });
-
-    // cursor follow
-    const cursor = document.querySelector('.cursor');
-    document.addEventListener('mousemove', e => {
-      cursor.style.top = e.clientY + 'px';
-      cursor.style.left = e.clientX + 'px';
-    });
-
-    // fade-in hero
-    const faders = document.querySelectorAll('.fade-in');
-    const observerF = new IntersectionObserver(entries => {
+    // Fade-in on scroll
+    const projects = document.getElementById("projects");
+    const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('visible'); observerF.unobserve(entry.target); }
+        if (entry.isIntersecting) {
+          projects.classList.add("visible");
+          observer.unobserve(projects);
+        }
       });
-    }, { threshold: 0.2 });
-    faders.forEach(el => observerF.observe(el));
-
-    // projects fade-in
-    const projects = document.getElementById('projects');
-    const projObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { projects.classList.add('visible'); projObserver.unobserve(projects); }
-      });
-    }, { threshold: 0.25 });
-    projObserver.observe(projects);
-
-    // tilt effect for card
-    const card = document.querySelector('.card');
-    const cardInner = document.querySelector('.card-inner');
-    if (card && cardInner) {
-      card.addEventListener('mousemove', e => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const rotateX = ((y - centerY) / centerY) * 10;
-        const rotateY = ((x - centerX) / centerX) * 10;
-        cardInner.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
-      });
-      card.addEventListener('mouseleave', () => { cardInner.style.transform = "rotateX(0) rotateY(0)"; });
-    }
-
-    // menu toggle
-    const hamburger = document.getElementById('hamburger');
-    const sidePanel = document.getElementById('sidePanel');
-    const panelBackdrop = document.getElementById('panelBackdrop');
-    const goProjects = document.getElementById('goProjects');
-
-    function openPanel() {
-      hamburger.classList.add('active');
-      hamburger.setAttribute('aria-expanded', 'true');
-      sidePanel.classList.add('active');
-      sidePanel.setAttribute('aria-hidden', 'false');
-      panelBackdrop.classList.add('active');
-      panelBackdrop.setAttribute('aria-hidden', 'false');
-    }
-    function closePanel() {
-      hamburger.classList.remove('active');
-      hamburger.setAttribute('aria-expanded', 'false');
-      sidePanel.classList.remove('active');
-      sidePanel.setAttribute('aria-hidden', 'true');
-      panelBackdrop.classList.remove('active');
-      panelBackdrop.setAttribute('aria-hidden', 'true');
-    }
-
-    hamburger.addEventListener('click', (e) => { e.stopPropagation(); sidePanel.classList.contains('active') ? closePanel() : openPanel(); });
-    panelBackdrop.addEventListener('click', () => closePanel());
-    goProjects.addEventListener('click', () => { projects.scrollIntoView({behavior:'smooth', block:'start'}); closePanel(); });
-
-    document.addEventListener('click', (evt) => {
-      const target = evt.target;
-      if (!sidePanel.contains(target) && !hamburger.contains(target) && sidePanel.classList.contains('active')) closePanel();
-    });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && sidePanel.classList.contains('active')) closePanel(); });
+    }, { threshold: 0.3 });
+    observer.observe(projects);
   </script>
 </body>
 </html>
