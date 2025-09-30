@@ -84,13 +84,17 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Center hero card */
+    /* Hero */
     .hero {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       text-align: center;
+      transition: transform 0.6s ease;
+    }
+    .hero.shrink {
+      transform: scale(0.9);
     }
     .card-inner {
       padding: 32px;
@@ -172,13 +176,12 @@
 
     /* Projects Section */
     #projects {
-      margin: 100px auto;
-      max-width: 760px;
-      padding: 40px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.12);
-      box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+      height: 100vh; /* full viewport height */
+      display: flex;
+      justify-content: center;
+      align-items: center;
       text-align: center;
+      padding: 40px;
       opacity: 0;
       transform: translateY(40px);
       transition: opacity 1s ease, transform 1s ease;
@@ -186,6 +189,13 @@
     #projects.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+    #projects .inner {
+      max-width: 760px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.12);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+      padding: 40px;
     }
     #projects h2 {
       font-size: 26px;
@@ -200,8 +210,8 @@
 </head>
 <body>
 
-  <!-- Hero (only shows at first) -->
-  <section class="hero">
+  <!-- Hero -->
+  <section class="hero" id="hero">
     <div class="card-inner">
       <h1>Thesegen Marimuthu</h1>
       <div class="tagline">Problem Solver • Builder • Innovator</div>
@@ -227,22 +237,30 @@
 
   <!-- Projects Section -->
   <section id="projects">
-    <h2>🚀 Projects Coming Soon</h2>
-    <p>Stay tuned! I’m working on exciting things.</p>
+    <div class="inner">
+      <h2>🚀 Projects Coming Soon</h2>
+      <p>Stay tuned! I’m working on exciting things.</p>
+    </div>
   </section>
 
   <script>
-    // Fade-in and fade-out projects on scroll
     const projects = document.getElementById("projects");
+    const hero = document.getElementById("hero");
+
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          projects.classList.add("visible");
-        } else {
-          projects.classList.remove("visible");
+        if (entry.target.id === "projects") {
+          if (entry.isIntersecting) {
+            projects.classList.add("visible");
+            hero.classList.add("shrink");
+          } else {
+            projects.classList.remove("visible");
+            hero.classList.remove("shrink");
+          }
         }
       });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.4 });
+
     observer.observe(projects);
   </script>
 </body>
