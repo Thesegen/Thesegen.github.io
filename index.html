@@ -5,9 +5,63 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Thesegen Marimuthu — Problem Solver & Tech Builder</title>
 
+  <!-- Google site verification -->
+  <meta name="google-site-verification" content="7YflHmwVOmBsp4ATQMZUK7tA9q19CfMW6uwwVLa_EAc" />
+
   <!-- SEO Meta -->
   <meta name="description" content="Thesegen Marimuthu | RoboDK Robotics Certified • Junior Python Developer • Creative problem solver building systems that turn challenges into solutions." />
   <meta name="author" content="Thesegen Marimuthu" />
+
+  <!-- JSON-LD Schema: Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Thesegen Marimuthu",
+    "alternateName": "Thesegen M",
+    "url": "https://thesegen.github.io",
+    "image": "https://thesegen.github.io/images/thesegen.jpg",
+    "jobTitle": "Junior Python Developer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Independent / Personal Projects"
+    },
+    "email": "mailto:vathesegen@gmail.com",
+    "sameAs": [
+      "https://www.linkedin.com/in/thesegen-marimuthu",
+      "https://github.com/thesegen",
+      "https://dev.to/thesegen_marimuthu",
+      "https://linktr.ee/Thesegen_Marimuthu"
+    ],
+    "knowsAbout": [
+      "Python",
+      "Web Development",
+      "Robotics",
+      "Automation",
+      "Problem Solving"
+    ],
+    "description": "Thesegen Marimuthu is RoboDK Robotics Certified and a Junior Python Developer, passionate about solving problems and building creative systems."
+  }
+  </script>
+
+  <!-- JSON-LD Schema: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Thesegen Marimuthu",
+    "url": "https://thesegen.github.io",
+    "author": {
+      "@type": "Person",
+      "name": "Thesegen Marimuthu"
+    },
+    "description": "Personal website of Thesegen Marimuthu — RoboDK Robotics Certified • Junior Python Developer • Creative problem solver building systems that turn challenges into solutions.",
+    "publisher": {
+      "@type": "Person",
+      "name": "Thesegen Marimuthu"
+    }
+  }
+  </script>
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -18,7 +72,6 @@
       font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       margin: 0;
       padding: 0;
-      min-height: 100vh;
       background: linear-gradient(-45deg, #a18cd1, #fbc2eb, #f9f9f9, #d9a7c7);
       background-size: 400% 400%;
       animation: gradientShift 12s ease infinite;
@@ -31,7 +84,7 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Center name card */
+    /* Center hero card */
     .hero {
       display: flex;
       justify-content: center;
@@ -45,6 +98,7 @@
       background: rgba(255, 255, 255, 0.15);
       box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
       position: relative;
+      max-width: 760px;
     }
     .card-inner::before {
       content: "";
@@ -57,7 +111,7 @@
     }
 
     h1 {
-      font-size: 36px;
+      font-size: 32px;
       font-weight: 700;
       color: #2d1b46;
       white-space: nowrap;
@@ -71,6 +125,49 @@
     }
     @keyframes blink {
       50% { border-color: transparent; }
+    }
+
+    .tagline {
+      margin-top: 10px;
+      font-size: 18px;
+      color: #6b2d84;
+      font-weight: 500;
+    }
+    p.lead {
+      margin: 12px 0 22px;
+      color: #4b3f5c;
+      font-size: 18px;
+    }
+    .links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .links a {
+      padding: 10px 18px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #8e2de2, #c471ed, #f64f59);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.35s ease;
+    }
+    .links a:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(142,45,226,0.35);
+    }
+
+    hr {
+      margin: 24px 0;
+      border: 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    footer {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #4b3f5c;
     }
 
     /* Projects Section */
@@ -103,10 +200,28 @@
 </head>
 <body>
 
-  <!-- Hero Name Card -->
+  <!-- Hero (only shows at first) -->
   <section class="hero">
     <div class="card-inner">
       <h1>Thesegen Marimuthu</h1>
+      <div class="tagline">Problem Solver • Builder • Innovator</div>
+      <p class="lead">RoboDK Robotics Certified • Junior Python Developer • Creative problem solver who builds systems that outlast problems.</p>
+
+      <div class="links">
+        <a href="https://www.linkedin.com/in/thesegen-marimuthu" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/thesegen" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="links.html"><i class="fas fa-link"></i> Portfolio</a>
+      </div>
+
+      <hr/>
+      <p>
+        I design practical solutions that simplify complexity — from auto classroom management systems to robotics simulations and Python automation.
+        Constantly learning and adapting, I aim to bring clarity, creativity, and problem-solving energy into every project I take on.
+      </p>
+
+      <footer>
+        © <span>2025</span> Thesegen Marimuthu • <a href="mailto:vathesegen@gmail.com">vathesegen@gmail.com</a>
+      </footer>
     </div>
   </section>
 
@@ -117,7 +232,7 @@
   </section>
 
   <script>
-    // Fade in/out projects section
+    // Fade-in and fade-out projects on scroll
     const projects = document.getElementById("projects");
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
