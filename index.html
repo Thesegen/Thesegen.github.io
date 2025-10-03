@@ -73,22 +73,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    /* Reset + Sticky footer layout */
-    html, body {
-      height: 100%;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-    }
-
     body {
       font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      margin: 0;
       background: linear-gradient(-45deg, #a18cd1, #fbc2eb, #f9f9f9, #d9a7c7);
       background-size: 400% 400%;
       animation: gradientShift 12s ease infinite;
       color: #111;
       overflow-x: hidden;
-      flex: 1;
     }
     @keyframes gradientShift {
       0% { background-position: 0% 50%; }
@@ -106,6 +98,7 @@
       transition: transform 0.6s ease;
     }
     .hero.shrink { transform: scale(0.9); }
+
     .card-inner {
       padding: 32px;
       border-radius: 18px;
@@ -123,6 +116,7 @@
       border-radius: 18px;
       z-index: -1;
     }
+
     h1 {
       font-size: 32px;
       font-weight: 700;
@@ -158,6 +152,7 @@
       box-shadow: 0 8px 20px rgba(142,45,226,0.35);
     }
     hr { margin: 24px 0; border: 0; border-top: 1px solid rgba(0,0,0,0.08); }
+    footer { margin-top: 20px; font-size: 14px; color: #4b3f5c; }
 
     /* Projects */
     #projects {
@@ -233,7 +228,12 @@
       justify-content: center;
     }
     .side-menu.active { right: 0; opacity: 1; }
-    .side-menu ul { list-style: none; padding: 0; margin: 0; text-align: center; }
+    .side-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+    }
     .side-menu ul li { margin: 20px 0; }
     .side-menu ul li a {
       text-decoration: none;
@@ -242,46 +242,36 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 12px 18px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.7);
+      padding: 12px 20px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #8e2de2, #c471ed);
+      color: #fff;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       transition: all 0.3s ease;
     }
     .side-menu ul li a:hover {
-      background: linear-gradient(135deg, #8e2de2, #c471ed);
-      color: #fff;
       transform: scale(1.05);
+      box-shadow: 0 6px 18px rgba(142,45,226,0.4);
     }
 
     /* Contact submenu */
     .contact-submenu { display: none; margin-top: 10px; }
     .contact-submenu a {
       font-size: 16px;
-      padding: 10px;
+      padding: 10px 16px;
       border-radius: 10px;
       background: rgba(240,240,240,0.9);
+      color: #2d1b46;
+      font-weight: 500;
     }
     .contact-submenu.active {
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
-
-    /* Footer */
-    .site-footer {
-      background: #111;
-      color: #fff;
-      padding: 30px 20px;
-      text-align: center;
-      margin-top: auto;
-    }
-    .site-footer a { color: #c471ed; text-decoration: none; }
-    .site-footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
-
   <!-- Hamburger -->
   <div class="menu-btn" id="menu-btn">
     <span></span>
@@ -299,8 +289,8 @@
       <li>
         <a href="#" id="contact-toggle"><i class="fas fa-address-book"></i> Contact</a>
         <div class="contact-submenu" id="contact-submenu">
-          <a href="https://instagram.com/YOUR_USERNAME" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-          <a href="https://t.me/YOUR_USERNAME" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
+          <a href="https://instagram.com/thesegen_marimuthu" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="https://t.me/Thesegen_Marimuthu" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
         </div>
       </li>
     </ul>
@@ -312,18 +302,19 @@
       <h1>Thesegen Marimuthu</h1>
       <div class="tagline">Problem Solver • Builder • Innovator</div>
       <p class="lead">RoboDK Robotics Certified • Junior Python Developer • Creative problem solver who builds systems that outlast problems.</p>
-
       <div class="links">
         <a href="https://www.linkedin.com/in/thesegen-marimuthu" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
         <a href="https://github.com/thesegen" target="_blank"><i class="fab fa-github"></i> GitHub</a>
         <a href="links.html"><i class="fas fa-link"></i> Portfolio</a>
       </div>
-
       <hr/>
       <p>
         I design practical solutions that simplify complexity — from auto classroom management systems to robotics simulations and Python automation.
-        Constantly learning and adapting, I aim to bring clarity, creativity, and problem-solving energy into every project I take on.
+        Constantly learning and adapting, I aim to bring clarity, creativity, and problem-solving energy into every project I tackle on.
       </p>
+      <footer>
+        © <span>2025</span> Thesegen Marimuthu • <a href="mailto:vathesegen@gmail.com">vathesegen@gmail.com</a>
+      </footer>
     </div>
   </section>
 
@@ -334,11 +325,6 @@
       <p>Stay tuned! I’m working on exciting things.</p>
     </div>
   </section>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    © <span>2025</span> Thesegen Marimuthu • <a href="mailto:vathesegen@gmail.com">vathesegen@gmail.com</a>
-  </footer>
 
   <script>
     // Observer for fade
