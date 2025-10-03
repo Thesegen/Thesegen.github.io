@@ -73,14 +73,22 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
+    /* Reset + Sticky footer layout */
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
     body {
       font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      margin: 0;
       background: linear-gradient(-45deg, #a18cd1, #fbc2eb, #f9f9f9, #d9a7c7);
       background-size: 400% 400%;
       animation: gradientShift 12s ease infinite;
       color: #111;
       overflow-x: hidden;
+      flex: 1;
     }
     @keyframes gradientShift {
       0% { background-position: 0% 50%; }
@@ -150,7 +158,6 @@
       box-shadow: 0 8px 20px rgba(142,45,226,0.35);
     }
     hr { margin: 24px 0; border: 0; border-top: 1px solid rgba(0,0,0,0.08); }
-    footer { margin-top: 20px; font-size: 14px; color: #4b3f5c; }
 
     /* Projects */
     #projects {
@@ -231,19 +238,46 @@
     .side-menu ul li a {
       text-decoration: none;
       font-size: 18px;
-      color: #2d1b46;
       font-weight: 600;
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      transition: color 0.3s ease;
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.7);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
     }
-    .side-menu ul li a:hover { color: #8e2de2; }
+    .side-menu ul li a:hover {
+      background: linear-gradient(135deg, #8e2de2, #c471ed);
+      color: #fff;
+      transform: scale(1.05);
+    }
 
     /* Contact submenu */
     .contact-submenu { display: none; margin-top: 10px; }
-    .contact-submenu a { font-size: 16px; }
-    .contact-submenu.active { display: flex; flex-direction: column; gap: 10px; }
+    .contact-submenu a {
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 10px;
+      background: rgba(240,240,240,0.9);
+    }
+    .contact-submenu.active {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: #111;
+      color: #fff;
+      padding: 30px 20px;
+      text-align: center;
+      margin-top: auto;
+    }
+    .site-footer a { color: #c471ed; text-decoration: none; }
+    .site-footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -290,10 +324,6 @@
         I design practical solutions that simplify complexity — from auto classroom management systems to robotics simulations and Python automation.
         Constantly learning and adapting, I aim to bring clarity, creativity, and problem-solving energy into every project I take on.
       </p>
-
-      <footer>
-        © <span>2025</span> Thesegen Marimuthu • <a href="mailto:vathesegen@gmail.com">vathesegen@gmail.com</a>
-      </footer>
     </div>
   </section>
 
@@ -304,6 +334,11 @@
       <p>Stay tuned! I’m working on exciting things.</p>
     </div>
   </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    © <span>2025</span> Thesegen Marimuthu • <a href="mailto:vathesegen@gmail.com">vathesegen@gmail.com</a>
+  </footer>
 
   <script>
     // Observer for fade
