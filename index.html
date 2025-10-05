@@ -5,10 +5,13 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Thesegen Marimuthu — Problem Solver & Tech Builder</title>
 
-  <!-- ✅ Canonical URL -->
+  <!-- ✅ Canonical -->
   <link rel="canonical" href="https://thesegen.github.io/" />
 
-  <!-- ✅ Google Search Console Verification -->
+  <!-- ✅ Favicon -->
+  <link rel="icon" type="image/png" href="https://thesegen.github.io/logo.png" />
+
+  <!-- ✅ Google Verification -->
   <meta name="google-site-verification" content="7YflHmwVOmBsp4ATQMZUK7tA9q19CfMW6uwwVLa_EAc" />
 
   <!-- ✅ Sitemap -->
@@ -18,25 +21,17 @@
   <meta name="description" content="Thesegen Marimuthu | RoboDK Robotics Certified • Junior Python Developer • Creative problem solver building systems that turn challenges into solutions." />
   <meta name="author" content="Thesegen Marimuthu" />
 
-  <!-- ✅ JSON-LD Schema: Person -->
+  <!-- ✅ JSON-LD Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Thesegen Marimuthu",
-    "name": "Thesegen",
-    "name": "thesegen marimuthu",
-    "name": "M.Thesegen",
-    "name": "m.thesegen",
-    "alternateName": "Thesegen M",
+    "alternateName": ["Thesegen M","M.Thesegen"],
     "url": "https://thesegen.github.io/",
     "image": "https://thesegen.github.io/images/thesegen.jpg",
     "jobTitle": "Junior Python Developer",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Street light energy saver",
-      "alternateName": "Street Light Energy Saver",
-    },
+    "worksFor": { "@type": "Organization", "name": "Street Light Energy Saver" },
     "email": "mailto:vathesegen@gmail.com",
     "sameAs": [
       "https://www.linkedin.com/in/thesegen-marimuthu",
@@ -44,39 +39,11 @@
       "https://dev.to/thesegen_marimuthu",
       "https://linktr.ee/Thesegen_Marimuthu"
     ],
-    "knowsAbout": [
-      "Python",
-      "Web Development",
-      "Robotics",
-      "Automation",
-      "Problem Solving",
-      "Coding",
-      "RobotDK"
-    ],
+    "knowsAbout": ["Python","Web Development","Robotics","Automation","Problem Solving","RobotDK"],
     "description": "Thesegen Marimuthu is RoboDK Robotics Certified and a Junior Python Developer, passionate about solving problems and building creative systems."
   }
   </script>
 
-  <!-- ✅ JSON-LD Schema: WebSite -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Thesegen Marimuthu",
-    "url": "https://thesegen.github.io/",
-    "author": {
-      "@type": "Person",
-      "name": "Thesegen Marimuthu"
-    },
-    "description": "Personal website of Thesegen Marimuthu — RoboDK Robotics Certified • Junior Python Developer • Creative problem solver building systems that turn challenges into solutions.",
-    "publisher": {
-      "@type": "Person",
-      "name": "Thesegen Marimuthu"
-    }
-  }
-  </script>
-
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
@@ -95,7 +62,7 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Hero */
+    /* Hero Section */
     .hero {
       display: flex;
       justify-content: center;
@@ -148,7 +115,7 @@
     .links a {
       padding: 10px 18px;
       border-radius: 10px;
-      background: linear-gradient(135deg, #8e2de2, #c471ed, #f64f59);
+      background: linear-gradient(135deg, #36d1dc, #5b86e5);
       color: #fff;
       text-decoration: none;
       font-weight: 500;
@@ -156,9 +123,9 @@
     }
     .links a:hover {
       transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 8px 20px rgba(142,45,226,0.35);
+      box-shadow: 0 8px 20px rgba(54,209,220,0.35);
     }
-    hr { margin: 24px 0; border: 0; border-top: 1px solid rgba(0,0,0,0.08); }
+
     footer { margin-top: 20px; font-size: 14px; color: #4b3f5c; }
 
     /* Projects */
@@ -182,7 +149,7 @@
       padding: 40px;
     }
 
-    /* Floating Hamburger */
+    /* Floating Menu Button */
     .menu-btn {
       position: fixed;
       top: 20px;
@@ -190,7 +157,7 @@
       width: 56px;
       height: 56px;
       border-radius: 50%;
-      background: linear-gradient(145deg, #ffffffaa, #d1c4e9aa);
+      background: linear-gradient(145deg, #ffffffaa, #c6cfffaa);
       backdrop-filter: blur(10px);
       display: flex;
       align-items: center;
@@ -223,11 +190,11 @@
       right: -300px;
       width: 280px;
       height: 100vh;
-      background: rgba(255,255,255,0.95);
+      background: rgba(255,255,255,0.98);
       backdrop-filter: blur(12px);
       box-shadow: -4px 0 20px rgba(0,0,0,0.15);
       transition: right 0.5s ease, opacity 0.3s ease;
-      padding: 60px 20px;
+      padding: 80px 20px;
       z-index: 1000;
       opacity: 0;
       display: flex;
@@ -235,51 +202,71 @@
       justify-content: center;
     }
     .side-menu.active { right: 0; opacity: 1; }
+
     .side-menu ul {
       list-style: none;
       padding: 0;
-      margin: 0;
+      margin: 0 auto;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .side-menu ul li { margin: 20px 0; }
+
+    .side-menu ul li {
+      margin: 16px 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
     .side-menu ul li a {
+      width: 80%;
       text-decoration: none;
       font-size: 18px;
       font-weight: 600;
-      display: inline-flex;
+      display: flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
-      padding: 12px 20px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #8e2de2, #c471ed);
+      padding: 14px 0;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
       color: #fff;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       transition: all 0.3s ease;
     }
     .side-menu ul li a:hover {
       transform: scale(1.05);
-      box-shadow: 0 6px 18px rgba(142,45,226,0.4);
+      background: linear-gradient(135deg, #5ee7df, #b490ca);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
     }
 
     /* Contact submenu */
-    .contact-submenu { display: none; margin-top: 10px; }
-    .contact-submenu a {
-      font-size: 16px;
-      padding: 10px 16px;
-      border-radius: 10px;
-      background: rgba(240,240,240,0.9);
-      color: #2d1b46;
-      font-weight: 500;
-    }
-    .contact-submenu.active {
-      display: flex;
+    .contact-submenu {
+      display: none;
+      margin-top: 10px;
       flex-direction: column;
       gap: 10px;
+      align-items: center;
     }
+    .contact-submenu a {
+      width: 70%;
+      padding: 10px 0;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #89f7fe, #66a6ff);
+      color: #fff;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .contact-submenu a:hover {
+      background: linear-gradient(135deg, #36d1dc, #5b86e5);
+    }
+    .contact-submenu.active { display: flex; }
   </style>
 </head>
 <body>
-  <!-- Hamburger -->
+  <!-- Floating Menu -->
   <div class="menu-btn" id="menu-btn">
     <span></span>
     <span></span>
@@ -308,20 +295,13 @@
     <div class="card-inner">
       <h1>Thesegen Marimuthu</h1>
       <div class="tagline">Problem Solver • Builder • Innovator</div>
-      <p class="lead">RoboDK Robotics Certified • Junior Python Developer • Creative problem solver who builds systems that outlast problems.</p>
+      <p class="lead">RoboDK Robotics Certified • Junior Python Developer • Creative problem solver building systems that outlast problems.</p>
       <div class="links">
         <a href="https://www.linkedin.com/in/thesegen-marimuthu" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
         <a href="https://github.com/thesegen" target="_blank"><i class="fab fa-github"></i> GitHub</a>
         <a href="links.html"><i class="fas fa-link"></i> Portfolio</a>
       </div>
-      <hr/>
-      <p>
-        I design practical solutions that simplify complexity — from auto classroom management systems to robotics simulations and Python automation.
-        Constantly learning and adapting, I aim to bring clarity, creativity, and problem-solving energy into every project I tackle on.
-      </p>
-      <footer>
-        © <span>2025</span> Thesegen Marimuthu • <a href="mailto:vathesegen@gmail.com">vathesegen@gmail.com</a>
-      </footer>
+      <footer>© 2025 Thesegen Marimuthu • <a href="mailto:vathesegen@gmail.com">vathesegen@gmail.com</a></footer>
     </div>
   </section>
 
@@ -334,7 +314,7 @@
   </section>
 
   <script>
-    // Observer for fade
+    // Fade animation
     const projects = document.getElementById("projects");
     const hero = document.getElementById("hero");
     const observer = new IntersectionObserver(entries => {
